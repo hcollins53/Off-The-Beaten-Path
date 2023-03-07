@@ -7,11 +7,11 @@ export const AddTrail = () => {
     const navigate = useNavigate()
     const[trail, update] = useState({
         name: "",
-        length: 0,
-        elevationGain: 0,
+        length: "",
+        elevationGain: "",
         difficulty: "",
-        lat: 0,
-        lon: 0,
+        lat: "",
+        lon: "",
         img: ""
     })
     const handleSaveButtonClick = (event) => {
@@ -66,7 +66,7 @@ export const AddTrail = () => {
                         onChange={
                             (evt) => {
                                 const copy = {...trail}
-                                copy.length = parseInt(evt.target.value)
+                                copy.length = parseFloat(evt.target.value)
                                 update(copy)
                             }
                         } />
@@ -115,7 +115,7 @@ export const AddTrail = () => {
                         onChange={
                             (evt) => {
                                 const copy = {...trail}
-                                copy.lat = parseInt(evt.target.value)
+                                copy.lat = parseFloat(evt.target.value)
                                 update(copy)
                             }
                         } />
@@ -131,7 +131,7 @@ export const AddTrail = () => {
                         onChange={
                             (evt) => {
                                 const copy = {...trail}
-                                copy.lon = parseInt(evt.target.value)
+                                copy.lon = parseFloat(evt.target.value)
                                 update(copy)
                             }
                         } />
