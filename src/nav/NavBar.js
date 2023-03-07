@@ -8,7 +8,7 @@ export const NavBar = () => {
             <Link className="navbar__link" to="/trails">Home</Link>
             </li>
             <li>
-            <Link className="navbar__link" to="/todoList">Want</Link>
+            <Link className="navbar__link" to="/wishList">Want</Link>
             </li>
             <li>
             <Link className="navbar__link" to="/completed">Completed</Link>
