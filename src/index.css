@@ -1,13 +1,29 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.image {
+  @apply bg-cover bg-[url("https://img.traveltriangle.com/blog/wp-content/uploads/2018/11/Canada-Mountains.jpg")];
+}
+.title{
+  @apply font-body text-4xl justify-center h-10 bg-aliceBlue
+}
+.signIn {
+  @apply inline-block items-center bg-slate-200 bg-opacity-90 shadow-lg rounded-lg
+}
+.signIn_h2 {
+ @apply text-3xl text-center m-4 border-b-2 border-gray-700
+}
+.form-control {
+  @apply rounded mb-4 border border-gray-700
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+ [data-theme="mytheme"] .btn{
+  background-color: lion;
+  }
+  .btn {
+    text-transform: none; 
+  }
