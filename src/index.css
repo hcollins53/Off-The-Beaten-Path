@@ -4,6 +4,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "leaflet/dist/leaflet.css";
 
 .image {
   @apply bg-cover bg-[url("https://img.traveltriangle.com/blog/wp-content/uploads/2018/11/Canada-Mountains.jpg")];
@@ -21,9 +22,20 @@
   @apply rounded mb-4 border border-gray-700
 }
 
- [data-theme="mytheme"] .btn{
+[data-theme="mytheme"] .btn{
   background-color: lion;
   }
-  .btn {
+.btn {
     text-transform: none; 
   }
+  .leaflet-container {
+
+    width: 70vw;
+
+    height: 80vh;
+
+    margin-left: 10%;
+
+    border-radius: 10px;
+
+}

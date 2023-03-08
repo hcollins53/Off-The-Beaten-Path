@@ -4,7 +4,6 @@ import { getReviews } from "./PostProvider"
 
 export const Posts = () => {
     const[reviews, setReviews] = useState([])
-    const [users, setUsers] = useState([])
     useEffect(
         () => {
             getReviews().then(
