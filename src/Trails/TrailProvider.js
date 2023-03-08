@@ -52,8 +52,9 @@ export const getWeather = (trail) => {
     .then(response => response.json())
     }
 
-
-
+export const WeatherIcon = (icon) => {
+    return (`http://openweathermap.org/img/wn/${icon}.png`)
+}
 
 
 
