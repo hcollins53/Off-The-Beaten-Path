@@ -18,3 +18,11 @@ export const findEmail = (email) => {
         return fetch(`http://localhost:8088/users?email=${email}`)
                 .then(res => res.json())
 }
+export const getUser = (hikeUser) => {
+    return fetch(`http://localhost:8088/users?id=${hikeUser.id}`)
+                .then(res => res.json())
+}
+export const getUsers = () => {
+    return fetch(`http://localhost:8088/users?`)
+                .then(res => res.json())
+}
