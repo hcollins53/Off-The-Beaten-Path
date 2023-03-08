@@ -59,7 +59,7 @@ export const AddTrail = () => {
                 <div className="form-group">
                     <label htmlFor="length">How long is the trail:</label>
                     <input required autoFocus
-                        type="text"
+                        type="number"
                         className="form-control"
                         placeholder="length in miles"
                         value={trail.length}
@@ -76,7 +76,7 @@ export const AddTrail = () => {
                 <div className="form-group">
                     <label htmlFor="elevationGain">What is the elevation gain:</label>
                     <input required autoFocus
-                        type="text"
+                        type="number"
                         className="form-control"
                         placeholder="in feet"
                         value={trail.elevationGain}
@@ -109,7 +109,7 @@ export const AddTrail = () => {
                 <div className="form-group">
                     <label htmlFor="lat">What is the latitude of the trail location:</label>
                     <input required autoFocus
-                        type="text"
+                        type="number"
                         className="form-control"
                         value={trail.lat}
                         onChange={
@@ -125,7 +125,7 @@ export const AddTrail = () => {
                 <div className="form-group">
                     <label htmlFor="lon">What is the longitude of the trail location:</label>
                     <input required autoFocus
-                        type="text"
+                        type="number"
                         className="form-control"
                         value={trail.lon}
                         onChange={
