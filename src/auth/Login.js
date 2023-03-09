@@ -27,7 +27,8 @@ export const Login = () => {
                 }
             })
     }
-return(
+return <>
+    <div className="title">Off the Beaten Path</div>
     <main className="font-body w-screen h-screen image">
     <section className="flex justify-center pt-56">
         <form className="signIn" onSubmit={handleLogin}>
@@ -41,15 +42,15 @@ return(
                     required autoFocus />
             </fieldset>
             <fieldset className="">
-                <button type="submit" className="ml-24 btn rounded-full btn-sm btn-lion rounded mb-2">
+                <button type="submit" className="ml-24 btn rounded-full btn-accent btn-sm rounded mb-2">
                     Sign in
                 </button>
             </fieldset>
             <section className="flex justify-center relative mb-2">
-            <Link className="ml-48 underline text-sm" to="/register">Not a member yet?</Link>
+            <Link className="ml-48 pr-2 underline text-sm" to="/register">Not a member yet?</Link>
         </section>
         </form>
     </section>
 </main>
-)
+</>
 }

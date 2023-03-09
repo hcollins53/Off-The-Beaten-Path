@@ -15,16 +15,16 @@ export const Posts = () => {
     )
     
     return<>
-    <h1>Community Posts</h1>
-    <div>
+    <h1 className="text-center font-title text-2xl">Community Posts</h1>
+    <div className="ml-4 font-title">
     {
         reviews.map(review => {
-            return <section>
+            return <section className="pl-4 border w-80">
                 <div className="text=xl">{review.title}</div>
                 <div className="w-72" > <img src={review.img} /></div>
                 <div>{review.description}</div>
                 <div>{review.rating}</div>
-                <div>Posted by {review?.user?.fullName} on {review.date}</div>
+                <div className="mb-4">Posted by {review?.user?.fullName} on {review.date}</div>
             </section>
         })
     }

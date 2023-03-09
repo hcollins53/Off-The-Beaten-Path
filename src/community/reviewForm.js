@@ -22,7 +22,7 @@ export const Review = () => {
 
         const newReview= {
             title: review.title,
-            trailId: trailId,
+            trailId: parseInt(trailId),
             userId: hikeUser.id,
             description: review.description,
             rating: review.rating,

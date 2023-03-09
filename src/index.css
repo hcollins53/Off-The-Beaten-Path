@@ -1,5 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
 
 @tailwind base;
 @tailwind components;
@@ -21,7 +23,9 @@
 .form-control {
   @apply rounded mb-4 border border-gray-700
 }
-
+.bg {
+  @apply bg-paleDogwood bg-cover p-8 rounded-lg shadow-2xl
+}
 [data-theme="mytheme"] .btn{
   background-color: lion;
   }
@@ -30,7 +34,7 @@
   }
   .leaflet-container {
 
-    width: 70vw;
+    width: 65vw;
 
     height: 80vh;
 
@@ -39,3 +43,26 @@
     border-radius: 10px;
 
 }
+.clear {
+  @apply bg-cover bg-[url("https://i.makeagif.com/media/6-04-2016/eS4dTI.gif")]
+}
+.clouds {
+  @apply bg-cover bg-[url("https://media.tenor.com/2eVevYiek64AAAAM/scary-weather.gif")]
+}
+.rain {
+  @apply bg-cover bg-[url("https://media.tenor.com/D8N2aMZtd4YAAAAC/rain.gif")]
+}
+.fog {
+  @apply bg-cover bg-[url("https://media.tenor.com/5ImWLS5QAJgAAAAC/foggy-fog.gif")]
+}
+.snow {
+  @apply bg-cover bg-[url("https://media.tenor.com/l2yp4uABNAQAAAAM/snow-falling.gif")]
+}
+.thunderstorms {
+  @apply bg-cover bg-[url("https://i.pinimg.com/originals/95/50/61/9550611aa1fd2611b1d6f286a4e812bf.gif")]
+}
+.bgImage {
+  @apply bg-cover bg-[url("https://www.xtrafondos.com/wallpapers/vertical/niebla-sobre-las-montanas-al-amanecer-9526.jpg")]
+}
+
+

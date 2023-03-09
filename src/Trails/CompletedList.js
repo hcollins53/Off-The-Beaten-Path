@@ -46,11 +46,11 @@ export const CompletedList = () => {
                 if(review.trailId === complete.trailId) {
                    return ""
                 } else {
-                   return <Link className="btn btn-primary" to="/review/form">Write a review</Link>
+                   return <Link className="btn btn-primary" to={`/review/form/${complete.trailId}`}>Write a review</Link>
                 }
             })
         } else {
-            return <Link className="btn btn-primary" to="/review/form">Write a review</Link>
+            return <Link className="btn btn-primary" to={`/review/form/${complete.trailId}`}>Write a review</Link>
         }  
     }
     return <>
