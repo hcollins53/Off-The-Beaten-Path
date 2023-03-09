@@ -45,7 +45,8 @@ export const Register = (props) => {
         setUser(copy)
     }
 
-    return (
+    return <>
+    <div className="title">Off the Beaten Path</div>
         <main className="mb-4 font-body w-screen h-screen image"style={{ textAlign: "center" }}>
             <form className="signIn mt-48" onSubmit={handleRegister}>
                 <h1 className=" text-3xl item-center mb-4 border-b-2 border-gray-700">Please Register</h1>
@@ -64,5 +65,5 @@ export const Register = (props) => {
                 </fieldset>
             </form>
         </main>
-    )
+        </>
 }

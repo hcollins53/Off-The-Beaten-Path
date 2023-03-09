@@ -11,8 +11,8 @@ export const MapMarker = (trails) => {
     return <>
     
     <Marker  position={[trail?.lat, trail?.lon]} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41]})}>
-      <Popup className="font-body">
-        {trail.name}
+      <Popup className="font-title">
+      <Link to={`/trails/${trail.id}`}> {trail.name} </Link>
       </Popup>
       </Marker>
     
@@ -24,8 +24,9 @@ export const MapMarker = (trails) => {
 
 
 
-export const TrailList = () => {
+export const TrailList = ({searchTermState}) => {
     const [trails, setTrails] = useState([])
+    const[filteredTrails, setFilteredTrails] = useState([])
     const navigate = useNavigate()
    
     useEffect(
@@ -37,14 +38,27 @@ export const TrailList = () => {
         },
         [] 
     )
+    useEffect(
+        () => {
+           const searchedTrails = trails.filter(trails => {
+           return trails.name.toLowerCase().startsWith(searchTermState.toLowerCase())
+        })
+           setFilteredTrails(searchedTrails)
+    
+        },
+        [searchTermState]
+    )
     function MyMapComponent() {
             return (
-                <MapContainer center={[43.0247, -108.3806]} zoom={4} scrollWheelZoom={false}>
+                <MapContainer center={[47.6588, -117.4260]} zoom={6} scrollWheelZoom={false}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {
+            filteredTrails ?
+          MapMarker(filteredTrails)
+          :
           MapMarker(trails)
          }
         
@@ -52,17 +66,19 @@ export const TrailList = () => {
             )
     }
     return <>
-        <article className="flex font-body">
-        <article className="">
-            <div className="text-2xl font-bold mb-4 pl-4 text-center">Trails </div>  
+        <article className="flex font-title">
+        <article className=""> 
             {
-                trails.map(trail => <Trails key={trail.id} id={trail.id} trail={trail} /> )
+                searchTermState ?
+                filteredTrails.map((trail) => <Trails key={trail.id} id={trail.id} trail={trail} /> )
+                :
+                trails.map((trail) => <Trails key={trail.id} id={trail.id} trail={trail} /> )
             }
             <section>
             <Link className="underline text-blue pl-4" to="/create">Can't find the trail you're looking for? </Link>
         </section>
         </article>
-        <section id="map" className="mt-2">
+        <section id="map" className="">
         {
             MyMapComponent()
         }
