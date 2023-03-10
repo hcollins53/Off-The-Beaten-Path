@@ -37,15 +37,17 @@ export const Review = () => {
 
     }
     return (
-        <form className="reviewForm">
-            <h2 className="reviewForm__title">Review this trail</h2>
-            <fieldset>
+        <article className="flex justify-center">
+        <form className="font-title h-screen">
+            <h2 className="text-4xl ml-8 pt-10 pb-10">Review this trail</h2>
+            <div className="border-2 border-black shadow-xl rounded-xl p-10 bg-slate-200 text-center">
+            <fieldset className="mb-2">
                 <div className="form-group">
-                    <label htmlFor="title">Title of Post:</label>
+                    <label className="mb-2">Title of Post:</label>
                     <input
                         required autoFocus
                         type="text"
-                        className="form-control"
+                        className="form-control mt-2 ml-12"
                         value={review.title}
                         onChange={
                             (evt) => {
@@ -56,12 +58,12 @@ export const Review = () => {
                         } />
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset className="mb-2">
                 <div className="form-group">
                     <label htmlFor="description">Your thoughts on the trail: </label>
                     <input required autoFocus
                         type="text"
-                        className="form-control"
+                        className="form-control mt-2 ml-12"
                         value={review.description}
                         onChange={
                             (evt) => {
@@ -72,12 +74,12 @@ export const Review = () => {
                         } />
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset className="mb-2">
                 <div className="form-group">
                     <label htmlFor="rating">How would you rate this trail out of 5:</label>
                     <input required autoFocus
                         type="number"
-                        className="form-control"
+                        className="form-control mt-2 ml-12"
                         value={review.rating}
                         onChange={
                             (evt) => {
@@ -88,12 +90,12 @@ export const Review = () => {
                         } />
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset className="mb-4">
                 <div className="form-group">
                     <label htmlFor="image">Post a link to an image of the Trail:</label>
                     <input required autoFocus
                         type="text"
-                        className="form-control"
+                        className="form-control mt-2 ml-12"
                         value={review.img}
                         onChange={
                             (evt) => {
@@ -109,7 +111,9 @@ export const Review = () => {
              className="btn btn-primary">
                 Submit New Review
             </button>
+            </div>
         </form>
+        </article>
     )
 
 }

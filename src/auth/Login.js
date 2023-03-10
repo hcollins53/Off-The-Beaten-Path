@@ -29,20 +29,20 @@ export const Login = () => {
     }
 return <>
     <div className="title">Off the Beaten Path</div>
-    <main className="font-body w-screen h-screen image">
+    <main className="font-title w-screen h-screen image">
     <section className="flex justify-center pt-56">
-        <form className="signIn" onSubmit={handleLogin}>
+        <form className="signIn text-center" onSubmit={handleLogin}>
             <h2 className="signIn_h2">Please sign in</h2>
-            <fieldset className="ml-4 mr-4">
+            <fieldset className="ml-4 mr-4 text-center mb-4">
                 <label htmlFor="inputEmail"> Email address </label>
                 <input type="email"
                     value={email}
                     onChange={evt => set(evt.target.value)}
-                    className="form-control"
+                    className="ml-2 rounded-lg border-slate-500 border-2 mt-4 mb-4"
                     required autoFocus />
             </fieldset>
             <fieldset className="">
-                <button type="submit" className="ml-24 btn rounded-full btn-accent btn-sm rounded mb-2">
+                <button type="submit" className=" btn rounded-full btn-lightSand btn-sm rounded mb-2">
                     Sign in
                 </button>
             </fieldset>

@@ -23,7 +23,7 @@ export const getUser = (hikeUser) => {
                 .then(res => res.json())
 }
 export const getUsers = () => {
-    return fetch(`http://localhost:8088/users?`)
+    return fetch(`http://localhost:8088/users`)
                 .then(res => res.json())
 }
 export const getUserProfile = (hikeUser) => {

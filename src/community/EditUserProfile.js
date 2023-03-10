@@ -41,15 +41,15 @@ export const UserProfileEdit = () => {
         })
     }
     return <>
-    <form className="">
-            <h2 className="">Update User Profile</h2>
+    <form className="font-title text-center h-screen">
+            <h2 className="text-2xl p-10">Update User Profile</h2>
             <fieldset>
-                <div className="">
+                <div className="pb-4">
                     <label htmlFor="image">Profile picture:</label>
                     <input
                         required autoFocus
                         type="text"
-                        className="form-control"
+                        className="ml-2 rounded-lg border-slate-500 border-2"
                         placeholder="image URL"
                         value={userProfile.image}
                         onChange={
@@ -62,10 +62,10 @@ export const UserProfileEdit = () => {
                 </div>
             </fieldset>
             <fieldset>
-                <div className="">
+                <div className="pb-4">
                     <label htmlFor="favoriteHike">Favorite Hike:</label>
                     <select 
-                        className="" 
+                        className="ml-2 rounded-lg border-slate-500 border-2" 
                             onChange={
                             (evt) => {
                                 const copy = {...userProfile}
@@ -86,9 +86,10 @@ export const UserProfileEdit = () => {
                 </div>
             </fieldset>
             <fieldset>
-                <div className="">
+                <div className="pb-4">
                     <label htmlFor="">Description:</label>
                     <input type="text"
+                        className="ml-2 rounded-lg border-slate-500 border-2"
                         value={userProfile.description}
                         onChange={
                             (evt) => {
@@ -100,9 +101,10 @@ export const UserProfileEdit = () => {
                 </div>
             </fieldset>
             <fieldset>
-                <div className="">
+                <div className="pb-6">
                     <label htmlFor="">Area You live in:</label>
                     <input type="text"
+                    className="ml-2 rounded-lg border-slate-500 border-2"
                         value={userProfile.area}
                         onChange={
                             (evt) => {

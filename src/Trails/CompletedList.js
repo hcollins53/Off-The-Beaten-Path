@@ -54,14 +54,15 @@ export const CompletedList = () => {
         }  
     }
     return <>
-    <section>
-        <h1>{user?.fullName}'s Completed Trail List</h1>
+    <article className="h-screen">
+    <h1 className="text-3xl font-title text-center pt-12">{user?.fullName}'s Completed Trail List</h1>
+    <section className="font-title pt-10 flex flex-wrap justify-center">
         {
             completed.map(complete => {
-                return <section key={complete.id}>
-                    <div>{complete?.trail?.name}</div>
-                    <div className="w-72"><img src={complete?.trail?.img}/></div>
-                    <div>  
+                return <section className="m-10  p-10 rounded-xl border-black border-2 shadow-2xl flex flex-wrap justify-center flex-col bg-gray-200" key={complete.id}>
+                    <div className="text-center mb-4">{complete?.trail?.name}</div>
+                    <div className="w-72 ml-4 mb-4"><img src={complete?.trail?.img}/></div>
+                    <div className="ml-20">  
                        {
                        checkIfUserHasWrittenAReview(complete)
                        
@@ -71,5 +72,6 @@ export const CompletedList = () => {
             })
         }
     </section>
+    </article>
     </>
 }

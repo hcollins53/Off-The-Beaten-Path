@@ -17,7 +17,7 @@ export const NavBar = () => {
         }, []
     )
     return (
-        <div className="navbar bg-platinum w-full bg-cover text-black relative shadow-lg font-title">
+        <div className="navbar bg-lion w-full bg-cover text-black relative shadow-lg font-title sticky top-0 z-50">
     <div className="navbar-start ">
       <div className="dropdown">
         <label tabIndex={0} className="btn btn-ghost btn-circle">
