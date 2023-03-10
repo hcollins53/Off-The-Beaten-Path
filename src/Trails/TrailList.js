@@ -40,8 +40,8 @@ export const TrailList = ({searchTermState}) => {
     )
     useEffect(
         () => {
-           const searchedTrails = trails.filter(trails => {
-           return trails.name.toLowerCase().startsWith(searchTermState.toLowerCase())
+           const searchedTrails = trails.filter(trail => {
+           return trail.name.toLowerCase().startsWith(searchTermState.toLowerCase())
         })
            setFilteredTrails(searchedTrails)
     

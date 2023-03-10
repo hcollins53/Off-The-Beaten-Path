@@ -1,8 +1,10 @@
 import { Outlet, Route, Routes } from "react-router-dom"
+import { UserProfileEdit } from "../community/EditUserProfile"
 import { UserMessages } from "../community/Messages"
 import { Posts } from "../community/Posts"
 import { Review } from "../community/reviewForm"
 import { UserProfile } from "../community/UserProfile"
+import { UserProfileForm } from "../community/UserProfileForm"
 import { CompletedList } from "../Trails/CompletedList"
 import { TrailContainer } from "../Trails/TrailContainer"
 import { TrailDetails } from "../Trails/TrailDetails"
@@ -31,6 +33,8 @@ export const ApplicationViews = () => {
               <Route path="/posts" element={<Posts />} />
               <Route path="/profile" element={<UserProfile />} />
               <Route path="/messages" element={<UserMessages />} />
+              <Route path="/profile/edit/:userProfileId" element={<UserProfileEdit />} />
+              <Route path="/profile/create/:userId" element={<UserProfileForm />} />
             </Route>
         </Routes>
         </div>

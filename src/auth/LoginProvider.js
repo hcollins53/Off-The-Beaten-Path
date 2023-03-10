@@ -26,3 +26,7 @@ export const getUsers = () => {
     return fetch(`http://localhost:8088/users?`)
                 .then(res => res.json())
 }
+export const getUserProfile = (hikeUser) => {
+    return fetch(`http://localhost:8088/userProfiles?_expand=user&userId=${hikeUser.id}`)
+                .then(res => res.json())
+}
