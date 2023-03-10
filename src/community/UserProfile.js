@@ -19,9 +19,9 @@ export const UserProfile = () => {
 
     return <>
     {
-        userProfile ? <article className="font-title text-center">
-        <div className="text-2xl p-4">{userProfile?.user?.fullName}</div>
-        <div className="flex justify-center pb-4">
+        userProfile ? <article className="font-title text-center pt-20 h-screen">
+        <div className="text-2xl p-6">{userProfile?.user?.fullName}</div>
+        <div className="flex justify-center pb-10">
             <img className="rounded-full shadow-xl w-60" src={userProfile.image} />
         </div>
         <div className="mb-2">Favorite hike: {userProfile.favoriteHike}</div>

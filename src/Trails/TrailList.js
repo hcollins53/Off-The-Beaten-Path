@@ -66,7 +66,7 @@ export const TrailList = ({searchTermState}) => {
             )
     }
     return <>
-        <article className="flex font-title">
+        <article className="flex font-title h-screen">
         <article className=""> 
             {
                 searchTermState ?

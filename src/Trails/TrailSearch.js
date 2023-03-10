@@ -1,8 +1,8 @@
 export const TrailSearch = ({ setterFunction }) => {
     return(
-        <div className="bg-platinum">
+        <div className="bg-orangeWheel">
         <div className="text-4xl font-title font-bold pl-4 text-center pt-4"> Trails</div>
-        <div className="ml-14 mb-4">
+        <div className="ml-20 mb-4">
             <input className="rounded border border-2 border-black search-hover"
             onChange={
                 (changeEvent) => {

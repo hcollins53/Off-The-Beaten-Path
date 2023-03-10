@@ -1,6 +1,6 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import { UserProfileEdit } from "../community/EditUserProfile"
-import { UserMessages } from "../community/Messages"
+import { UserMessages } from "../messages/Messages"
 import { Posts } from "../community/Posts"
 import { Review } from "../community/reviewForm"
 import { UserProfile } from "../community/UserProfile"
@@ -10,13 +10,14 @@ import { TrailContainer } from "../Trails/TrailContainer"
 import { TrailDetails } from "../Trails/TrailDetails"
 import { AddTrail } from "../Trails/TrailForm"
 import { WishList } from "../Trails/WishList"
+import { MessageForm } from "../messages/MessageForm"
 
 
 
 
 export const ApplicationViews = () => {
     return <>
-        <div className="bg-platinum h-screen">
+        <div className="bg-platinum h-full w-full">
         <Routes>
             <Route path="/" element={
                 <>
@@ -35,6 +36,7 @@ export const ApplicationViews = () => {
               <Route path="/messages" element={<UserMessages />} />
               <Route path="/profile/edit/:userProfileId" element={<UserProfileEdit />} />
               <Route path="/profile/create/:userId" element={<UserProfileForm />} />
+              <Route path="/message/create" element={<MessageForm />} />
             </Route>
         </Routes>
         </div>

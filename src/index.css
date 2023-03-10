@@ -9,13 +9,13 @@
 @import "leaflet/dist/leaflet.css";
 
 .image {
-  @apply bg-cover bg-[url("https://img.traveltriangle.com/blog/wp-content/uploads/2018/11/Canada-Mountains.jpg")];
+  @apply bg-cover bg-no-repeat bg-[url("https://cdn.pixabay.com/photo/2017/03/27/04/37/sunset-2177324_960_720.jpg")];
 }
 .title{
-  @apply font-body text-4xl justify-center h-10 bg-aliceBlue
+  @apply font-title text-4xl justify-center h-10 bg-lightSand
 }
 .signIn {
-  @apply inline-block items-center bg-slate-200 bg-opacity-90 shadow-lg rounded-lg
+  @apply inline-block items-center bg-slate-200 bg-opacity-60 shadow-lg rounded-lg
 }
 .signIn_h2 {
  @apply text-3xl text-center m-4 border-b-2 border-gray-700
@@ -26,8 +26,8 @@
 .bg {
   @apply bg-paleDogwood bg-cover p-8 rounded-lg shadow-2xl
 }
-[data-theme="mytheme"] .btn{
-  background-color: lion;
+.btn-lightSand{
+ @apply bg-carolinaBlue text-black;
   }
 .btn {
     text-transform: none; 
@@ -66,3 +66,6 @@
 }
 
 
+/*
+https://cdn.pixabay.com/photo/2014/09/10/00/59/mountains-440520_960_720.jpg
+*/

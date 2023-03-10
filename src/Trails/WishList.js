@@ -59,16 +59,17 @@ export const WishList = () => {
     }
     
     return <>
-    <section>
-        <h1>{user?.fullName}'s Wish List</h1>
+    <div className="h-screen">
+    <h1 className="text-3xl font-title text-center pt-6">{user?.fullName}'s Wish List</h1>
+    <section className="font-title pt-10 flex flex-wrap justify-center">
         {
             wishList.map(wish => {
-                return <section key={wish.id}>
-                    <div>{wish?.trail?.name}</div>
-                    <div className="w-72"><img src={wish?.trail?.img}/></div>
+                return <section className="m-4 p-10 rounded-xl border-black border-2 shadow-2xl mb-10" key={wish.id}>
+                    <div className="mb-4 text-xl text-center">{wish?.trail?.name}</div>
+                    <div className="w-72 ml-2 mb-4 item-center"><img src={wish?.trail?.img}/></div>
                     <div>
                     <button onClick={(clickEvent) => handleAddToCompleted(clickEvent, wish)}
-                    className="btn btn-primary">
+                    className="btn btn-primary ml-6 mr-4">
                         Completed Trail
                     </button>
                    {
@@ -79,5 +80,6 @@ export const WishList = () => {
             })
         }
     </section>
+    </div>
     </>
 }
