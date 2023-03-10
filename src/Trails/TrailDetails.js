@@ -82,14 +82,20 @@ export const TrailDetails = () => {
         }, [weather]
        )
            
-            
+    //   const handleReadMore = (event) => {
+    //     event.preventDefault()
+    //     detailsHTML()
+    //   } 
+    //   const detailsHTML = () => {
+    //     <div>More information like trail conditions & directions from the interstate</div> 
+    //   }     
     
     return <>
     <h1 className="text-4xl font-title text-center pt-10 font-bold">{trail.name}</h1>
     <article className="flex pt-16 justify-center">
     <section className="text-center font-body flex-col bg-platinum">
         <div className="group h-full w-full [perspective:1000px] ">
-        <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+        <div className="relative h-full w-full rounded-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
     <div className="w-72 mb-2 absolute inset-0">
             <img className="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40" src={trail.img} />
         </div>
@@ -102,15 +108,20 @@ export const TrailDetails = () => {
         <div className="mb-4">
             Elevation Gain: {trail.elevationGain} ft
         </div>
-        <div className="mb-2">
+        <div className="mb-4">
             Difficulty: {trail.difficulty}
         </div>
+        {/* <button
+        onClick={(clickEvent) => handleReadMore(clickEvent)}
+            >
+            Read more
+        </button> */}
         </div>
         </div>
         </div>
         </div>
     </section>
-    <section className={`ml-32 text-center text-black shadow-xl rounded-xl font-title font-bold p-4 w-80 mt-4 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] ${image}`}>
+    <section className={`ml-32 text-center text-black shadow-2xl rounded-xl font-title font-bold p-4 w-80 mt-4 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] ${image}`}>
         <div className="bg-slate-100 bg-opacity-30">
       <div className="text-xl mb-10">{trail.name} </div>
        <div className="mb-4"> {weather?.weather?.[0]?.description} </div>
@@ -122,6 +133,9 @@ export const TrailDetails = () => {
     </section>
     </article>
     <div className="flex justify-center">
+        {/* {
+            detailsHTML()
+        } */}
     <button
             onClick={(clickEvent) => handleAddButton(clickEvent)}
             className="btn btn-primary mt-10">

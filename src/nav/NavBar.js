@@ -1,20 +1,19 @@
 import { Link, useNavigate } from "react-router-dom"
-import { getUser } from "../auth/LoginProvider"
 import { useEffect, useState } from "react"
+import { getUserProfile } from "../auth/LoginProvider"
 
 export const NavBar = () => {
     const navigate = useNavigate()
-    const [user, updateUser] = useState({})
     const localHiker = localStorage.getItem("hike_user")
     const hikeUser = JSON.parse(localHiker)
+    const [userProfile, updateUserProfile] = useState({})
     useEffect(
         () => {
-            getUser(hikeUser).then(
+            getUserProfile(hikeUser).then(
                 (userData) => {
                     const singleUser = userData[0]
-                    updateUser(singleUser)
-                }
-            )
+                    updateUserProfile(singleUser)
+                })
         }, []
     )
     return (
@@ -32,6 +31,7 @@ export const NavBar = () => {
       </div>
     </div>
     <div className="navbar-center">
+        <img className="w-20" src="./logo.jpg" />
       <Link to="/trails" className="btn btn-ghost normal-case text-4xl text-caribbeanCurrent">Off the Beaten Path</Link>
     </div>
     <div className="navbar-end">
@@ -46,7 +46,11 @@ export const NavBar = () => {
       <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-          <img src={user.image} />
+            {
+                userProfile ? <img src={userProfile.image} />
+                : <img src="./logo.jpg" />
+            }
+          
         </div>
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -56,12 +60,12 @@ export const NavBar = () => {
             <span className="badge">New</span>
           </Link>
         </li>
-        <li><div className="navbar__item navbar__logout">
+        <li>
             <Link className="navbar__link" to="" onClick={() => {
                  localStorage.removeItem("hike_user")
                 navigate("/", {replace: true})
          }}>Logout</Link>
-     </div></li>
+     </li>
       </ul>
     </div>
     </div>

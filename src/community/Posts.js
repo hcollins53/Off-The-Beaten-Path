@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { getUsers } from "../auth/LoginProvider"
 import { getReviews } from "./PostProvider"
 
 export const Posts = () => {
