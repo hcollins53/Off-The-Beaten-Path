@@ -54,7 +54,7 @@ export const CompletedList = () => {
         }  
     }
     return <>
-    <article className="h-screen">
+    <article className="h-full">
     <h1 className="text-3xl font-title text-center pt-12">{user?.fullName}'s Completed Trail List</h1>
     <section className="font-title pt-10 flex flex-wrap justify-center">
         {

@@ -17,7 +17,7 @@ import { MessageForm } from "../messages/MessageForm"
 
 export const ApplicationViews = () => {
     return <>
-        <div className="bg-platinum h-full w-full">
+        <div className="bg-paleDogwood h-full w-full">
         <Routes>
             <Route path="/" element={
                 <>

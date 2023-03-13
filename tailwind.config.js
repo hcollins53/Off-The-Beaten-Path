@@ -17,7 +17,6 @@ module.exports = {
       midnightGreen: '#0F424Eff',
       carolinaBlue: '#73A8D0ff',
       blueunsell:' #17929Eff',
-      buff: '#DA9C65ff',
       airSuperiorityBlue: '#82A7C5ff',
       paleDogwood:'#C4AFA7ff',
       platinum: '#DFE7E2ff',
@@ -27,6 +26,9 @@ module.exports = {
     caramel:'#D47D44ff',
     apricot: '#FACBB7ff',
     ashGray: '#A7CAC3ff',
+      },
+      screens: {
+        "chat-bp": "755px",
       }
     },
   },
