@@ -55,7 +55,7 @@ export const WishList = () => {
             DeleteWish(wish).then(() => {
                    getWishList()
                 })  
-        }} className="btn btn-primary">Delete</button>
+        }} className="btn btn-color">Delete</button>
     }
     
     return <>
@@ -64,12 +64,12 @@ export const WishList = () => {
     <section className="font-title pt-10 flex flex-wrap justify-center">
         {
             wishList.map(wish => {
-                return <section className="m-4 p-10 rounded-xl border-black border-2 shadow-2xl mb-10" key={wish.id}>
+                return <section className="m-4 p-10 rounded-xl border-black border-2 shadow-2xl mb-10 bg-silver" key={wish.id}>
                     <div className="mb-4 text-xl text-center">{wish?.trail?.name}</div>
                     <div className="w-72 ml-2 mb-4 item-center"><img src={wish?.trail?.img}/></div>
                     <div>
                     <button onClick={(clickEvent) => handleAddToCompleted(clickEvent, wish)}
-                    className="btn btn-primary ml-6 mr-4">
+                    className="btn ml-6 mr-4 btn-color">
                         Completed Trail
                     </button>
                    {
