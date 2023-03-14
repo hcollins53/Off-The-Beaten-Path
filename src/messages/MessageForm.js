@@ -29,7 +29,7 @@ export const MessageForm = () => {
             senderId: hikeUser.id,
             receiverId: message.receiverId,
             body: message.body,
-            date: new Date().toLocaleDateString()
+            date: new Date().toLocaleString()
         }
         AddNewMessage(newMessage).then(
             () => {
