@@ -1,15 +1,15 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { getUsers } from "../auth/LoginProvider"
+import { getUserProfileById } from "../auth/LoginProvider"
 
 
-export const LeftSide = ({id, fullMessage}) => {
+export const UserNamesListed = ({ fullMessage, UserNameClicked}) => {
     const[users, setUsers] =useState([])
-    const[user, updateUser] = useState({})
-    
-    // const[sentMessages, updateSentMessages] = useState([])
-    // const[receivedMessages, updateReceivedMessages] = useState([])
-    // let fullMessages = []
+    const[user, setUser] = useState(null)
+    const localHiker = localStorage.getItem("hike_user")
+    const hikeUser = JSON.parse(localHiker)
+    const [userProfile, updateUserProfile] = useState({})
     useEffect(
         () => {
             getUsers().then(
@@ -20,36 +20,55 @@ export const LeftSide = ({id, fullMessage}) => {
     )
     useEffect(
         () => {
-            if(users.length)
-           {let foundUser = findUser()
-           updateUser(foundUser) }
-        }, [users]
+            if(users.length && fullMessage.length)
+          {findUser()}
+        }, [users, fullMessage]
+    )
+    useEffect(
+        () => {
+            if(user)
+            {getUserProfileById(user.id).then(
+                (userData) => {
+                    const singleUser = userData[0]
+                    updateUserProfile(singleUser)
+                })}
+        }, [user]
     )
         const findUser = () => {
-           fullMessage.map(
-            (message) =>
-            {users.find(user => {
-            return user.id === message.receiverId
-            })}
-           )}
-        
-    // sentMessages.map(sentMessage => {
-    //    let messages = receivedMessages.filter(receivedMessage => (sentMessage.senderId === receivedMessage.receiverId))
-    //    fullMessages.push(messages)
-    // })
-    // receivedMessages.map(
-    //     receivedMessage => {
-    //         let secondMessages = sentMessages.filter(sentMessage => (sentMessage.receiverId === receivedMessage.senderId))
-    //         fullMessages.push(secondMessages)
-    //     }
-    // )
-  console.log(user)
+            fullMessage.map(
+                message => {
+                    const sender = users.find((u) => u.id === message.senderId)
+                    const receiver = users.find((u) => u.id === message.receiverId)
+                    if (sender.id !== hikeUser.id) {
+                        setUser(sender)
+                        } else {
+                        setUser(receiver)
+                        }
+        })}
+    const handleClickUserName = (event) => {
+        event.preventDefault()
+        const value = event.target.value
+        UserNameClicked(value)
+    }
+
     return <> 
-           <div>
+        <div className="flex flex-row py-2 border-b border-gray-700 hover:bg-silver">
+            {
+                userProfile ? <img className="rounded-full w-[25px] mr-2" src={userProfile?.image} />
+                : ""
+            }
+           <div className="">
+            { user ?
+            <button 
+            onClick={(clickEvent) => handleClickUserName(clickEvent)} value={user.id} >
           {
-            user ? `${user.fullName}`
+            user ? `${user.fullName}` 
             : ""
           }
+          </button>
+          : ""
+        }
+        </div>
         </div>
     </>
 }
