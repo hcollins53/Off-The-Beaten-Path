@@ -4,7 +4,7 @@ import { getUsers } from "../auth/LoginProvider"
 import { getUserProfileById } from "../auth/LoginProvider"
 
 
-export const UserNamesListed = ({ fullMessage, UserNameClicked}) => {
+export const UserNamesListed = ({ userToDisplay, UserNameClicked}) => {
     const[users, setUsers] =useState([])
     const[user, setUser] = useState(null)
     const localHiker = localStorage.getItem("hike_user")
@@ -20,9 +20,9 @@ export const UserNamesListed = ({ fullMessage, UserNameClicked}) => {
     )
     useEffect(
         () => {
-            if(users.length && fullMessage.length)
+            if(users.length && userToDisplay.body)
           {findUser()}
-        }, [users, fullMessage]
+        }, [users, userToDisplay]
     )
     useEffect(
         () => {
@@ -35,16 +35,15 @@ export const UserNamesListed = ({ fullMessage, UserNameClicked}) => {
         }, [user]
     )
         const findUser = () => {
-            fullMessage.map(
-                message => {
-                    const sender = users.find((u) => u.id === message.senderId)
-                    const receiver = users.find((u) => u.id === message.receiverId)
+            const sender = users.find((u) => u.id === userToDisplay.senderId)
+            const receiver = users.find((u) => u.id === userToDisplay.receiverId)
                     if (sender.id !== hikeUser.id) {
                         setUser(sender)
                         } else {
                         setUser(receiver)
                         }
-        })}
+                }
+        
     const handleClickUserName = (event) => {
         event.preventDefault()
         const value = event.target.value
@@ -52,7 +51,7 @@ export const UserNamesListed = ({ fullMessage, UserNameClicked}) => {
     }
 
     return <> 
-        <div className="flex flex-row py-2 border-b border-gray-700 hover:bg-silver">
+        <div className="flex flex-row py-2 border-b border-gray-700 hover:bg-silver pl-2">
             {
                 userProfile ? <img className="rounded-full w-[25px] mr-2" src={userProfile?.image} />
                 : ""
