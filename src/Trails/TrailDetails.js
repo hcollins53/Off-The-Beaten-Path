@@ -43,7 +43,7 @@ export const TrailDetails = () => {
         const handleAddButton = (event) => {
             event.preventDefault()
             const AddWishList = {
-                trailId: trailId,
+                trailId: parseInt(trailId),
                 userId: hikeUser.id
             }
 
@@ -76,7 +76,10 @@ export const TrailDetails = () => {
                     break;
                 case "Thunderstorms":
                     setClass("thunderstorms");
-                    break;   
+                    break;  
+                case "Mist":
+                    setClass("mist");
+                    break; 
             }
 
         }, [weather]
@@ -91,9 +94,10 @@ export const TrailDetails = () => {
     //   }     
     
     return <>
-    <h1 className="text-4xl font-title text-center pt-10 font-bold">{trail.name}</h1>
-    <article className="flex pt-16 justify-center">
-    <section className="text-center font-body flex-col bg-platinum">
+    <article className="h-screen">
+    <h1 className="text-4xl font-title text-center pt-10 font-bold bg-paleDogwood">{trail.name}</h1>
+    <section className="flex pt-16 justify-center">
+    <section className="text-center font-body flex-col bg-paleDogwood">
         <div className="group h-full w-full [perspective:1000px] ">
         <div className="relative h-full w-full rounded-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
     <div className="w-72 mb-2 absolute inset-0">
@@ -131,17 +135,18 @@ export const TrailDetails = () => {
         <div>The humidity is {weather?.main?.humidity}%</div>
         </div>
     </section>
-    </article>
+    </section>
     <div className="flex justify-center">
         {/* {
             detailsHTML()
         } */}
     <button
             onClick={(clickEvent) => handleAddButton(clickEvent)}
-            className="btn btn-primary mt-10">
+            className="font-title btn-color2 mt-10 btn-sm">
                 Add To Wish List
         </button>
         </div>
+        </article>
     </>
 }
 

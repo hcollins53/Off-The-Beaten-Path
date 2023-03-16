@@ -41,7 +41,7 @@ export const TrailList = ({searchTermState}) => {
     useEffect(
         () => {
            const searchedTrails = trails.filter(trail => {
-           return trail.name.toLowerCase().startsWith(searchTermState.toLowerCase())
+           return (trail.name.toLowerCase().startsWith(searchTermState.toLowerCase()) || trail.difficulty.toLowerCase().startsWith(searchTermState.toLowerCase()))
         })
            setFilteredTrails(searchedTrails)
     
@@ -68,12 +68,14 @@ export const TrailList = ({searchTermState}) => {
     return <>
         <article className="flex font-title h-screen">
         <article className=""> 
+        <section className="overflow-auto overflow-y-scroll overflow-hidden h-3/4">
             {
                 searchTermState ?
                 filteredTrails.map((trail) => <Trails key={trail.id} id={trail.id} trail={trail} /> )
                 :
                 trails.map((trail) => <Trails key={trail.id} id={trail.id} trail={trail} /> )
             }
+        </section>
             <section>
             <Link className="underline text-blue pl-4" to="/create">Can't find the trail you're looking for? </Link>
         </section>

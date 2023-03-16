@@ -6,7 +6,7 @@ import { MessageDetails } from "./MessageDetails"
 import { getUserProfile } from "../auth/LoginProvider"
 import { UserNamesListed } from "./LeftSide"
 
-export const UserMessages = () => {
+export const UserMessages = ({searchTermState}) => {
     const localHiker = localStorage.getItem("hike_user")
     const hikeUser = JSON.parse(localHiker)
     const [userProfile, updateUserProfile] = useState({})
@@ -17,6 +17,7 @@ export const UserMessages = () => {
     const [id, setId] = useState("")
     const[check, setCheck] = useState(true)
     const[usersDisplayed, setUsersDisplayed] = useState([])
+    const[filteredNames, setFilteredNames] = useState([])
     useEffect(
         () => {
             getUserProfile(hikeUser).then(
@@ -28,17 +29,51 @@ export const UserMessages = () => {
     )
     useEffect(
         () => {
-            getUserSentMessages(hikeUser).then((sentMessagesArray) => {
-                updateSentMessages(sentMessagesArray)
-             })
-            getUserReceivedMessages(hikeUser).then((receivedMessagesArray) => {
-                updateReceivedMessages(receivedMessagesArray)
-            })
-            
+          GetAllMessagesForUser()
+           
         }, []
     )
+    const GetAllMessagesForUser = () => {
+        getUserSentMessages(hikeUser).then((sentMessagesArray) => {
+            updateSentMessages(sentMessagesArray)
+         })
+        getUserReceivedMessages(hikeUser).then((receivedMessagesArray) => {
+            updateReceivedMessages(receivedMessagesArray)
+        })
+    }
 
     useEffect(() => {
+        SortFullMessages()
+        }, [receivedMessages, sentMessages])
+     useEffect(
+        () => {
+            if(fullMessages.length) {
+                const uniqueNames = fullMessages.filter((message, index, array) => {
+                    for (let i = 0; i < index; i++) {
+                      if (array[i].senderId === message.senderId && array[i].receiverId === message.receiverId || array[i].receiverId === message.senderId && array[i].senderId === message.receiverId ) {
+                        return false
+                      }
+                    }
+                    return true
+                  })
+                setUsersDisplayed(uniqueNames)
+            }
+        }, [fullMessages]
+     ) 
+     useEffect(
+        () => {
+            const searchedNames = usersDisplayed.filter(user => {
+                return user.fullName.toLowerCase().startsWith(searchTermState.toLowerCase())
+             })
+                setFilteredNames(searchedNames)
+        }, [searchTermState]
+     )
+    useEffect(
+        () => {
+            UserNameClicked()
+        }, []
+    )
+    const SortFullMessages = () => {
         if (receivedMessages.length && sentMessages.length) {
             const newSentMessages = sentMessages.map(sentMessage => {
               const messages = receivedMessages.filter(receivedMessage => {
@@ -55,8 +90,6 @@ export const UserMessages = () => {
               messages.push(receivedMessage);
               return messages;
             })
-        //    const merged = [...newSentMessages, ...newReceivedMessages]
-        //   console.log(merged)
             const mergedMessages = newSentMessages.concat(newReceivedMessages).reduce((acc, messages) => [...acc, ...messages], [])
             const uniqueMessages = mergedMessages.filter((message, index, array) => {
                 for (let i = 0; i < index; i++) {
@@ -68,36 +101,16 @@ export const UserMessages = () => {
               })
             setFullMessages(uniqueMessages)
             setIsLoading(false)
-
-}}, [receivedMessages, sentMessages])
-     useEffect(
-        () => {
-            if(fullMessages.length) {
-                const uniqueNames = fullMessages.filter((message, index, array) => {
-                    for (let i = 0; i < index; i++) {
-                      if (array[i].senderId === message.senderId && array[i].receiverId === message.receiverId || array[i].receiverId === message.senderId && array[i].senderId === message.receiverId ) {
-                        return false
-                      }
-                    }
-                    return true
-                  })
-                setUsersDisplayed(uniqueNames)
-            }
-        }, [fullMessages]
-     ) 
-     
-    useEffect(
-        () => {
-            UserNameClicked()
-        }, [id]
-    )
-    
+}
+    }
         const UserNameClicked = (id) => {
             if(id) {
           setId(id)
           setCheck(false)
         } }  
-   
+    const updateMessages = () => {
+       return GetAllMessagesForUser()
+    } 
     return <>
     <div className="w-screen h-screen overflow-hidden font-title">
     <div className="flex justify-start chat-bp:justify-center items-center h-screen"> 
@@ -112,13 +125,15 @@ export const UserMessages = () => {
         <div className="flex justify-between items-center h-[60px] p-2">
             <input 
             type="text"
-            placeholder="Search or start a new chat" 
+            placeholder="Search name" 
             className="rounded-lg text-gray-500 text-sm font-light outline-none px-4 py-2 w-[400px] h-[35px] placeholder:text-sm placeholder:font-light"/>
          </div>
          <div className="">
        {
-        isLoading && usersDisplayed.length ? ""
-        : usersDisplayed.map(user => <UserNamesListed UserNameClicked={UserNameClicked} userToDisplay={user}/>)
+        searchTermState ? 
+        filteredNames.map(user => <UserNamesListed UserNameClicked={UserNameClicked} userToDisplay={user}/>)
+        : isLoading && usersDisplayed.length ? ""
+            : usersDisplayed.map(user => <UserNamesListed UserNameClicked={UserNameClicked} userToDisplay={user}/>)
        }
         <div className="text-center pt-2">
     { 
@@ -133,10 +148,11 @@ export const UserMessages = () => {
     <div className=" w-full h-screen">
     {
         check ? ""
-        :  <MessageDetails fullMessages={fullMessages} userId={id} updateReceivedMessages={updateReceivedMessages} updateSentMessages={updateSentMessages}/>
+        :  <MessageDetails fullMessages={fullMessages} userId={id} updateMessages={updateMessages} />
     }
     </div>
     </div>
     </div>
     </>
 }
+//updateMessages={updateMessages}
