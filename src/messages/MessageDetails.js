@@ -6,7 +6,7 @@ import { AddNewMessage } from "./MessageProvider";
 import { getUserSentMessages } from "./MessageProvider";
 import { getUserReceivedMessages } from "./MessageProvider";
 
-export const MessageDetails = ({fullMessages, userId, updateReceivedMessages, updateSentMessages}) => {
+export const MessageDetails = ({fullMessages, userId, updateMessages }) => {
     const[userProfile, updateUser] = useState({})
     const[isLoading, setIsLoading] = useState(true)
     const[myMessages, setMyMessages]= useState([])
@@ -26,7 +26,7 @@ export const MessageDetails = ({fullMessages, userId, updateReceivedMessages, up
     useEffect(
         () => {
             getMessages()
-        }, [userProfile]
+        }, [fullMessages, userId]
     )
     const getMessages = () => {
         if(fullMessages.length)
@@ -60,21 +60,14 @@ export const MessageDetails = ({fullMessages, userId, updateReceivedMessages, up
         date: new Date().toLocaleString()
     }
     AddNewMessage(newMessage).then(
-        getUserSentMessages(hikeUser).then((sentMessagesArray) => {
-            updateSentMessages(sentMessagesArray)
-         }).then(
-        getUserReceivedMessages(hikeUser).then((receivedMessagesArray) => {
-            updateReceivedMessages(receivedMessagesArray)
-        })).then(
-            getMessages()
-        )
-   
-    )
+        () => {
+            updateMessages()
+        })
 }
    
     return <> 
-    <div className="ml-6 p-4 flex flex-col h-96 w-11/12 border-2 border-slate-500 bg-silver h-full">
-    <div className="h-full">
+    <div className="ml-6 p-4 flex flex-col h-11/12 w-11/12 border-2 border-slate-500 bg-silver mt-10">
+    <div className="h-auto">
     <div className="flex flex-col">
         <div className="flex flex-row items-center justify-center mb-4">
             {
@@ -104,7 +97,7 @@ export const MessageDetails = ({fullMessages, userId, updateReceivedMessages, up
     ref={inputRef}
     className="rounded-lg  placeholder:text-sm mr-4"
     />
-    <button className="btn btn-sm btn-lightSand" 
+    <button className="btn font-light btn-sm btn-justColor" 
     onClick={(clickEvent) => handleSendButtonClick(clickEvent)}
     >send</button>
    </div>

@@ -1,22 +1,27 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { AddNewReview } from "./PostProvider"
-
-
+import { FaStar } from "react-icons/fa"
 export const Review = () => {
     const navigate = useNavigate()
     const localHiker = localStorage.getItem("hike_user")
     const hikeUser = JSON.parse(localHiker)
     const {trailId} = useParams()
+    const[rating, setRating] = useState(null)
+    const[hover, setHover] = useState(null)
+
     const[review, update] = useState({
         title: "",
         trailId: "",
         userId: "",
         description: "",
-        rating: "",
+        rating: 0,
         img: "",
         date: ""
     })
+    const handleRating = (rate) => {
+        setRating(rate)
+    }
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
@@ -75,20 +80,14 @@ export const Review = () => {
                 </div>
             </fieldset>
             <fieldset className="mb-2">
-                <div className="form-group">
-                    <label htmlFor="rating">How would you rate this trail out of 5:</label>
-                    <input required autoFocus
-                        type="number"
-                        className="form-control mt-2 ml-12"
-                        value={review.rating}
-                        onChange={
-                            (evt) => {
-                                const copy = {...review}
-                                copy.rating = parseInt(evt.target.value)
-                                update(copy)
-                            }
-                        } />
-                </div>
+            <label className="mr-4" htmlFor="rating">How would you rate this trail out of 5:</label>
+                <div className="rating">
+                    <input type="radio" name="rating-1" className="mask mask-star" />
+                    <input type="radio" name="rating-1" className="mask mask-star" checked />
+                    <input type="radio" name="rating-1" className="mask mask-star" />
+                    <input type="radio" name="rating-1" className="mask mask-star" />
+                    <input type="radio" name="rating-1" className="mask mask-star" />
+                    </div>    
             </fieldset>
             <fieldset className="mb-4">
                 <div className="form-group">
@@ -108,7 +107,7 @@ export const Review = () => {
             </fieldset>
             <button 
              onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-             className="btn btn-primary">
+             className="btn btn-color2 font-light">
                 Submit New Review
             </button>
             </div>
@@ -117,3 +116,15 @@ export const Review = () => {
     )
 
 }
+
+{/* <input required autoFocus
+                        type="number"
+                        className="form-control mt-2 ml-12"
+                        value={review.rating}
+                        onChange={
+                            (evt) => {
+                                const copy = {...review}
+                                copy.rating = parseInt(evt.target.value)
+                                update(copy)
+                            }
+                        } /> */}

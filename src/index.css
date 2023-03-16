@@ -32,6 +32,12 @@
 .btn-color {
   @apply bg-blue text-black
 }
+.btn-color2 {
+  @apply bg-caribbeanCurrent text-white rounded-full h-12 w-40
+}
+.btn-justColor {
+  @apply bg-caribbeanCurrent text-white rounded-full
+}
 .btn {
     text-transform: none; 
   }
@@ -39,9 +45,9 @@
 
     width: 65vw;
 
-    height: 80vh;
+    height: 75vh;
 
-    margin-left: 10%;
+    margin-left: 7%;
 
     border-radius: 10px;
 
@@ -67,7 +73,9 @@
 .bgImage {
   @apply bg-cover bg-[url("https://www.xtrafondos.com/wallpapers/vertical/niebla-sobre-las-montanas-al-amanecer-9526.jpg")]
 }
-
+.mist {
+  @apply bg-cover bg-[url("https://thumbs.gfycat.com/DeliciousUnfortunateCockroach-size_restricted.gif")]
+}
 
 /*
 https://cdn.pixabay.com/photo/2014/09/10/00/59/mountains-440520_960_720.jpg
