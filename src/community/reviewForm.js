@@ -1,15 +1,14 @@
 import React, { useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { AddNewReview } from "./PostProvider"
-import { FaStar } from "react-icons/fa"
+
 export const Review = () => {
     const navigate = useNavigate()
     const localHiker = localStorage.getItem("hike_user")
     const hikeUser = JSON.parse(localHiker)
     const {trailId} = useParams()
     const[rating, setRating] = useState(null)
-    const[hover, setHover] = useState(null)
-
+   
     const[review, update] = useState({
         title: "",
         trailId: "",
@@ -19,9 +18,7 @@ export const Review = () => {
         img: "",
         date: ""
     })
-    const handleRating = (rate) => {
-        setRating(rate)
-    }
+  
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
@@ -30,21 +27,23 @@ export const Review = () => {
             trailId: parseInt(trailId),
             userId: hikeUser.id,
             description: review.description,
-            rating: review.rating,
+            rating: rating,
             img: review.img,
             date: new Date().toLocaleDateString()
         }
-
        AddNewReview(newReview)
             .then(() => {
                navigate("/posts")
             }) 
-
+    }
+    const handleRating = (event) => {
+        setRating(event.target.value)
+        //setIsChecked(true)
     }
     return (
         <article className="flex justify-center">
         <form className="font-title h-screen">
-            <h2 className="text-4xl ml-8 pt-10 pb-10">Review this trail</h2>
+            <h2 className="text-4xl pt-10 pb-10 text-center">Review this trail</h2>
             <div className="border-2 border-black shadow-xl rounded-xl p-10 bg-slate-200 text-center">
             <fieldset className="mb-2">
                 <div className="form-group">
@@ -52,7 +51,7 @@ export const Review = () => {
                     <input
                         required autoFocus
                         type="text"
-                        className="form-control mt-2 ml-12"
+                        className="form-control mt-2 mx-auto"
                         value={review.title}
                         onChange={
                             (evt) => {
@@ -68,7 +67,7 @@ export const Review = () => {
                     <label htmlFor="description">Your thoughts on the trail: </label>
                     <input required autoFocus
                         type="text"
-                        className="form-control mt-2 ml-12"
+                        className="form-control mt-2 mx-auto"
                         value={review.description}
                         onChange={
                             (evt) => {
@@ -82,11 +81,11 @@ export const Review = () => {
             <fieldset className="mb-2">
             <label className="mr-4" htmlFor="rating">How would you rate this trail out of 5:</label>
                 <div className="rating">
-                    <input type="radio" name="rating-1" className="mask mask-star" />
-                    <input type="radio" name="rating-1" className="mask mask-star" checked />
-                    <input type="radio" name="rating-1" className="mask mask-star" />
-                    <input type="radio" name="rating-1" className="mask mask-star" />
-                    <input type="radio" name="rating-1" className="mask mask-star" />
+                    <input type="radio" name="rating-2" value="1" className="mask mask-star bg-orange-400" onClick={handleRating} />
+                    <input type="radio" name="rating-2" value="2" className="mask mask-star bg-orange-400" onClick={handleRating}/>
+                    <input type="radio" name="rating-2" value="3" className="mask mask-star bg-orange-400" onClick={handleRating}/>
+                    <input type="radio" name="rating-2" value="4" className="mask mask-star bg-orange-400" onClick={handleRating}/>
+                    <input type="radio" name="rating-2" value="5" className="mask mask-star bg-orange-400" onClick={handleRating}/>
                     </div>    
             </fieldset>
             <fieldset className="mb-4">
@@ -94,7 +93,7 @@ export const Review = () => {
                     <label htmlFor="image">Post a link to an image of the Trail:</label>
                     <input required autoFocus
                         type="text"
-                        className="form-control mt-2 ml-12"
+                        className="form-control mt-2 mx-auto"
                         value={review.img}
                         onChange={
                             (evt) => {
@@ -107,7 +106,7 @@ export const Review = () => {
             </fieldset>
             <button 
              onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-             className="btn btn-color2 font-light">
+             className="btn btn-justColor font-light">
                 Submit New Review
             </button>
             </div>

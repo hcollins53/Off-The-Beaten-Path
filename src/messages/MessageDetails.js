@@ -3,8 +3,7 @@ import { useEffect, useState } from "react"
 import { getUserProfileById } from "../auth/LoginProvider"
 import { useRef } from 'react';
 import { AddNewMessage } from "./MessageProvider";
-import { getUserSentMessages } from "./MessageProvider";
-import { getUserReceivedMessages } from "./MessageProvider";
+
 
 export const MessageDetails = ({fullMessages, userId, updateMessages }) => {
     const[userProfile, updateUser] = useState({})
@@ -37,13 +36,13 @@ export const MessageDetails = ({fullMessages, userId, updateMessages }) => {
        return myMessages?.map(message =>{
             if(message.senderId === parseInt(userId)) {
               return <div className="chat chat-start">
-               <div className="mb-2 chat-bubble"> {message.body} </div> <div className="chat-footer opacity-50">
+               <div className="mb-2 chat-bubble max-w-xs"> {message.body} </div> <div className="chat-footer opacity-50">
                Delivered
                </div></div>
            }     
            else {
                return <div className="chat chat-end">
-               <div className="mb-2 chat-bubble"> {message.body} </div> <div className="chat-footer opacity-50">
+               <div className="mb-2 chat-bubble chat-bubble-color max-w-xs"> {message.body} </div> <div className="chat-footer opacity-50">
                Delivered
                </div></div>
            }} )
@@ -71,7 +70,7 @@ export const MessageDetails = ({fullMessages, userId, updateMessages }) => {
     <div className="flex flex-col">
         <div className="flex flex-row items-center justify-center mb-4">
             {
-                userProfile ? <img src={userProfile[0]?.image} className="h-[25px] rounded-full mr-4" />
+                userProfile ? <img src={userProfile[0]?.image} className="h-[20px] w-[25px] rounded-full mr-4" />
                 : ""
             }
             {

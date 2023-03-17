@@ -60,14 +60,14 @@ export const UserMessages = ({searchTermState}) => {
             }
         }, [fullMessages]
      ) 
-     useEffect(
-        () => {
-            const searchedNames = usersDisplayed.filter(user => {
-                return user.fullName.toLowerCase().startsWith(searchTermState.toLowerCase())
-             })
-                setFilteredNames(searchedNames)
-        }, [searchTermState]
-     )
+    //  useEffect(
+    //     () => {
+    //         const searchedNames = usersDisplayed.filter(user => {
+    //             return user.fullName.toLowerCase().startsWith(searchTermState.toLowerCase())
+    //          })
+    //             setFilteredNames(searchedNames)
+    //     }, [searchTermState]
+    //  )
     useEffect(
         () => {
             UserNameClicked()
@@ -90,7 +90,8 @@ export const UserMessages = ({searchTermState}) => {
               messages.push(receivedMessage);
               return messages;
             })
-            const mergedMessages = newSentMessages.concat(newReceivedMessages).reduce((acc, messages) => [...acc, ...messages], [])
+            const mergedMessages = newSentMessages.concat(newReceivedMessages).reduce((acc, messages) => [...acc, ...messages], []).map(message => ({...message, date: new Date(Date.parse(message.date))})) // convert date to Date object
+            .sort((a, b) => a.date - b.date);
             const uniqueMessages = mergedMessages.filter((message, index, array) => {
                 for (let i = 0; i < index; i++) {
                   if (array[i].senderId === message.senderId && array[i].receiverId === message.receiverId && array[i].body === message.body) {
@@ -118,8 +119,8 @@ export const UserMessages = ({searchTermState}) => {
     <div className="flex flex-col border-r border-neutral-700 w-full h-screen pl-4">
         <div className="flex justify-between items-center h-[20px] p-3 mt-2">
         {
-                userProfile ? <img src={userProfile.image} className="rounded-full w-[25px]" />
-                : <img src="./logo.jpg" className="rounded-full w-[25px]" />
+                userProfile ? <img src={userProfile.image} className="rounded-full w-[25px] h-[20px]" />
+                : <img src="./logo.jpg" className="rounded-full w-[25px]  h-[20px]" />
         }
         </div>
         <div className="flex justify-between items-center h-[60px] p-2">

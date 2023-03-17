@@ -56,8 +56,13 @@ export const NavBar = () => {
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <li>
           <Link className="justify-between" to='/profile'>
-            Profile
-            <span className="badge">New</span>
+            Your Profile
+          </Link>
+        </li>
+        <li>
+          <Link className="justify-between" to='/userProfiles'>
+          Connect with Others!
+          <span className="badge">New</span>
           </Link>
         </li>
         <li>

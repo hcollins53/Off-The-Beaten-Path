@@ -11,6 +11,7 @@ import { TrailDetails } from "../Trails/TrailDetails"
 import { AddTrail } from "../Trails/TrailForm"
 import { WishList } from "../Trails/WishList"
 import { MessageForm } from "../messages/MessageForm"
+import { UserProfiles } from "../community/UserProfiles"
 
 
 
@@ -37,6 +38,7 @@ export const ApplicationViews = () => {
               <Route path="/profile/edit/:userProfileId" element={<UserProfileEdit />} />
               <Route path="/profile/create/:userId" element={<UserProfileForm />} />
               <Route path="/message/create" element={<MessageForm />} />
+              <Route path="/userProfiles" element={<UserProfiles />} />
             </Route>
         </Routes>
         </div>

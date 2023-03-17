@@ -70,13 +70,13 @@ export const WishList = () => {
     <section className="font-title pt-10 flex flex-wrap justify-center">
         {
             wishList.map(wish => {
-                return <section className="m-4 p-10 rounded-xl border-black border-2 shadow-2xl mb-10 bg-silver w-96 " key={wish.id}>
-                    <div className="mb-4 text-2xl text-center">
+                return <section className="m-4 p-6 rounded-xl border-black border-2 shadow-2xl mb-10 bg-silver w-auto " key={wish.id}>
+                    <div className="mb-4 text-xl text-center">
                         <Link to={`/trails/${wish.trailId}`}>{wish?.trail?.name}</Link></div>
-                    <div className="w-72 mb-4 item-center"><img src={wish?.trail?.img}/></div>
+                    <div className="w-72 mb-4 mx-auto"><img src={wish?.trail?.img}/></div>
                     <div className="flex flex-row">
                     <button onClick={(clickEvent) => handleAddToCompleted(clickEvent, wish)}
-                    className="btn-sm mr-2 btn-color2 ">
+                    className="btn-sm mx-auto mr-2 btn-color2 ">
                         Completed Trail
                     </button>
                    {
