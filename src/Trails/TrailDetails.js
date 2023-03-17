@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
+import { GetUserWishList } from "./TrailProvider"
+import { getUserCompletedList } from "./TrailProvider"
 import { WeatherIcon } from "./TrailProvider"
 import { getWeather } from "./TrailProvider"
 import { AddNewWishList } from "./TrailProvider"
@@ -15,7 +17,9 @@ export const TrailDetails = () => {
     const localHiker = localStorage.getItem("hike_user")
     const hikeUser = JSON.parse(localHiker)
     const navigate = useNavigate()
-    
+    const[wishList, setWishList] = useState([])
+    const[completedList, setCompletedList] = useState([])
+    console.log(trailId)
     useEffect(
         () => {
             getTrailById({trailId})
@@ -25,6 +29,21 @@ export const TrailDetails = () => {
                 })
         },
         [trailId]
+    )
+    useEffect(
+        () => {
+            GetUserWishList(hikeUser).then(
+                (wishArray) => {
+                    setWishList(wishArray)
+                }
+            ).then(
+                getUserCompletedList(hikeUser).then(
+                    (completedArray) => {
+                        setCompletedList(completedArray)
+                    }
+                )
+            )
+        }
     )
     const getWeatherInformation = () => {
         if(trail.name) {
@@ -85,22 +104,33 @@ export const TrailDetails = () => {
         }, [weather]
        )
            
-    //   const handleReadMore = (event) => {
-    //     event.preventDefault()
-    //     detailsHTML()
-    //   } 
-    //   const detailsHTML = () => {
-    //     <div>More information like trail conditions & directions from the interstate</div> 
-    //   }     
+      
+        const AddToWishListButton = () => {
+            const filteredWishList = wishList.filter(wish => wish.trailId === trailId);
+            const filteredCompletedList = completedList.filter(completed => completed.trailId === trailId);
+          
+            if (filteredWishList.length && filteredCompletedList.length) {
+              return null;
+            } else{
+          
+            return  (
+                <button
+                  onClick={(clickEvent) => handleAddButton(clickEvent)}
+                  className="font-title btn-color2 mt-10 btn-sm">
+                  Add To Wish List
+                </button>
+              );
+            }
+          };
     
     return <>
     <article className="h-screen">
     <h1 className="text-4xl font-title text-center pt-10 font-bold bg-paleDogwood">{trail.name}</h1>
-    <section className="flex pt-16 justify-center">
+    <section className="flex pt-16 justify-evenly">
     <section className="text-center font-body flex-col bg-paleDogwood">
         <div className="group h-full w-full [perspective:1000px] ">
         <div className="relative h-full w-full rounded-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-    <div className="w-72 mb-2 absolute inset-0">
+    <div className="w-72 mb-2 h-full w-82 absolute inset-0">
             <img className="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40" src={trail.img} />
         </div>
         <h1 className="text-xl mb-2">Sawtooth Lake and Alpine Peak h</h1>
@@ -115,17 +145,13 @@ export const TrailDetails = () => {
         <div className="mb-4">
             Difficulty: {trail.difficulty}
         </div>
-        {/* <button
-        onClick={(clickEvent) => handleReadMore(clickEvent)}
-            >
-            Read more
-        </button> */}
+       
         </div>
         </div>
         </div>
         </div>
     </section>
-    <section className={`ml-32 text-center text-black shadow-2xl rounded-xl font-title font-bold p-4 w-80 mt-4 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] ${image}`}>
+    <section className={` text-center text-black shadow-2xl rounded-xl font-title font-bold p-4 w-80 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] ${image}`}>
         <div className="bg-slate-100 bg-opacity-30">
       <div className="text-xl mb-10">{trail.name} </div>
        <div className="mb-4"> {weather?.weather?.[0]?.description} </div>
@@ -137,14 +163,8 @@ export const TrailDetails = () => {
     </section>
     </section>
     <div className="flex justify-center">
-        {/* {
-            detailsHTML()
-        } */}
-    <button
-            onClick={(clickEvent) => handleAddButton(clickEvent)}
-            className="font-title btn-color2 mt-10 btn-sm">
-                Add To Wish List
-        </button>
+       { AddToWishListButton()}
+    
         </div>
         </article>
     </>

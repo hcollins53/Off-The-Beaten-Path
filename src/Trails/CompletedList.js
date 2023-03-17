@@ -52,11 +52,11 @@ export const CompletedList = () => {
                 if(review.trailId === complete.trailId) {
                    return ""
                 } else {
-                   return <Link className="btn font-light btn-color2" to={`/review/form/${complete.trailId}`}>Write a review</Link>
+                   return <Link className="btn font-light btn-justColor mx-auto" to={`/review/form/${complete.trailId}`}>Write a review</Link>
                 }
             })
         } else {
-            return <Link className="btn-sm font-light btn-color2" to={`/review/form/${complete.trailId}`}>Write a review</Link>
+            return <Link className="btn font-light btn-justColor mx-auto" to={`/review/form/${complete.trailId}`}>Write a review</Link>
         }  
     }
     return <>
@@ -66,12 +66,12 @@ export const CompletedList = () => {
         {
             completed.map(complete => {
                 return <section className="m-10  p-2 rounded-xl border-black border-2 shadow-2xl flex flex-wrap justify-center flex-col bg-silver" key={complete.id}>
-                    <div className="text-center text-xl m-4">
+                    <div className="text-center text-xl m-2">
                     <Link to={`/trails/${complete.trailId}`}>{complete?.trail?.name}
                     </Link>
                     </div>
-                    <div className="w-72 ml-6 mb-4"><img className="w-60 ml-4" src={complete?.trail?.img}/></div>
-                    <div className="ml-20">  
+                    <div className="w-72 mx-auto p-4"><img className=" mx-auto" src={complete?.trail?.img}/></div>
+                    <div className="mx-auto mb-2">  
                        {
                        checkIfUserHasWrittenAReview(complete)
                        

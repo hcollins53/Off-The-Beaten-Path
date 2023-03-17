@@ -24,7 +24,7 @@ export const MapMarker = (trails) => {
 
 
 
-export const TrailList = ({searchTermState}) => {
+export const TrailList = ({searchTermState, sortByDifficulty, sortByMileage, sortByElevation}) => {
     const [trails, setTrails] = useState([])
     const[filteredTrails, setFilteredTrails] = useState([])
     const navigate = useNavigate()
@@ -40,8 +40,58 @@ export const TrailList = ({searchTermState}) => {
     )
     useEffect(
         () => {
+            const searchedTrails = trails.filter(trail => {
+                return trail.difficulty.includes(sortByDifficulty)
+            })
+            setFilteredTrails(searchedTrails)
+        }, [sortByDifficulty]
+    )
+    useEffect(
+        () => {
+            const searchedTrails = trails.filter(trail => {
+               if(sortByMileage === "3"){
+                    if(trail.length <= 3){
+                        return trail
+                    }
+               } else if(sortByMileage === "6"){
+                if(trail.length > 3 && trail.length <= 6){
+                    return trail
+                }
+               }
+               else if(sortByMileage === "6.1"){
+                if(trail.length >= 6){
+                    return trail
+                }
+               }
+            })
+            setFilteredTrails(searchedTrails)
+        }, [sortByMileage]
+    )
+    useEffect(
+        () => {
+            const searchedTrails = trails.filter(trail => {
+                if(sortByElevation === "700"){
+                     if(trail.elevationGain <= 700){
+                         return trail
+                     }
+                } else if(sortByElevation === "1500"){
+                 if(trail.elevationGain > 700 && trail.elevationGain <= 1500){
+                     return trail
+                 }
+                }
+                else if(sortByElevation === "1501"){
+                 if(trail.elevationGain >= 1500){
+                     return trail
+                 }
+                }
+             })
+            setFilteredTrails(searchedTrails)
+        }, [sortByElevation]
+    )
+    useEffect(
+        () => {
            const searchedTrails = trails.filter(trail => {
-           return (trail.name.toLowerCase().startsWith(searchTermState.toLowerCase()) || trail.difficulty.toLowerCase().startsWith(searchTermState.toLowerCase()))
+           return (trail.name.toLowerCase().startsWith(searchTermState.toLowerCase()))
         })
            setFilteredTrails(searchedTrails)
     
@@ -70,7 +120,7 @@ export const TrailList = ({searchTermState}) => {
         <article className=""> 
         <section className="overflow-auto overflow-y-scroll overflow-hidden h-3/4">
             {
-                searchTermState ?
+                searchTermState || sortByDifficulty ?
                 filteredTrails.map((trail) => <Trails key={trail.id} id={trail.id} trail={trail} /> )
                 :
                 trails.map((trail) => <Trails key={trail.id} id={trail.id} trail={trail} /> )

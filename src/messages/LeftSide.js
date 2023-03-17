@@ -53,7 +53,7 @@ export const UserNamesListed = ({ userToDisplay, UserNameClicked}) => {
     return <> 
         <div className="flex flex-row py-2 border-b border-gray-700 hover:bg-silver pl-2">
             {
-                userProfile ? <img className="rounded-full w-[25px] mr-2" src={userProfile?.image} />
+                userProfile ? <img className="rounded-full w-[25px] h-[20px] mr-2" src={userProfile?.image} />
                 : ""
             }
            <div className="">

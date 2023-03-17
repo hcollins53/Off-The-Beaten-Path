@@ -41,6 +41,9 @@
 .btn {
     text-transform: none; 
   }
+.chat-bubble-color {
+  @apply bg-blue
+}
   .leaflet-container {
 
     width: 65vw;

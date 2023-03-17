@@ -117,7 +117,7 @@ export const UserProfileEdit = () => {
             </fieldset>
             <button 
              onClick={(clickEvent) => handleSubmitEdit(clickEvent)}
-             className="btn btn-primary">
+             className="btn btn-justColor font-light">
                 Save Edit
             </button>
         </form>

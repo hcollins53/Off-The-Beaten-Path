@@ -36,3 +36,7 @@ export const AddNewProfile = (newProfile) => {
         })
             .then(res => res.json())
 }
+export const getUserProfiles = () => {
+    return fetch(`http://localhost:8088/userProfiles?_expand=user`)
+    .then(res => res.json())
+}

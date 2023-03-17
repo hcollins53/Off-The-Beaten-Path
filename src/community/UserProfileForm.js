@@ -116,7 +116,7 @@ export const UserProfileForm = () => {
     </fieldset>
     <button 
      onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-     className="btn btn-primary">
+     className="btn btn-color2">
         Save User Profile
     </button>
 </form></>
