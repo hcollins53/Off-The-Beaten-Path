@@ -10,7 +10,6 @@ export const CompletedList = () => {
     const [user, updateUser] = useState({})
     const localHiker = localStorage.getItem("hike_user")
     const hikeUser = JSON.parse(localHiker)
-    const navigate = useNavigate()
     const [reviews, setReviews] = useState([])
     const [screenHeight, setScreeHight] = useState("")
     useEffect(
@@ -27,7 +26,7 @@ export const CompletedList = () => {
             getUserCompletedList(hikeUser).then(
                 (completedArray) => {
                     setCompleted(completedArray)
-                    if(completedArray.length > 3){
+                    if(completedArray.length > 2){
                         setScreeHight("full")
                     } else {
                         setScreeHight("screen")
@@ -47,17 +46,12 @@ export const CompletedList = () => {
         }, []
     )
     const checkIfUserHasWrittenAReview = (complete) => {
-        if(reviews.length){
-            return reviews.map(review => {
-                if(review.trailId === complete.trailId) {
-                   return ""
-                } else {
-                   return <Link className="btn font-light btn-justColor mx-auto" to={`/review/form/${complete.trailId}`}>Write a review</Link>
-                }
-            })
-        } else {
-            return <Link className="btn font-light btn-justColor mx-auto" to={`/review/form/${complete.trailId}`}>Write a review</Link>
-        }  
+       const completedReview =  reviews.find(review =>  review.trailId === complete.trailId)
+       if(typeof completedReview === 'undefined') {
+        return <Link className="btn font-light btn-justColor mx-auto" to={`/review/form/${complete.trailId}`}>Write a review</Link>
+       } else {
+        return ""
+       }
     }
     return <>
     <article className={`h-${screenHeight}`}>
@@ -74,7 +68,6 @@ export const CompletedList = () => {
                     <div className="mx-auto mb-2">  
                        {
                        checkIfUserHasWrittenAReview(complete)
-                       
                        }
                     </div>
                     </section>
@@ -84,3 +77,15 @@ export const CompletedList = () => {
     </article>
     </>
 }
+
+// if(reviews.length){
+//     return reviews.map(review => {
+//         if(review.trailId != complete.trailId) {
+//            return  <Link className="btn font-light btn-justColor mx-auto" to={`/review/form/${complete.trailId}`}>Write a review</Link>
+//         } else {
+//           return ""
+//         }
+//     })
+// } else {
+//     return <Link className="btn font-light btn-justColor mx-auto" to={`/review/form/${complete.trailId}`}>Write a review</Link>
+// }

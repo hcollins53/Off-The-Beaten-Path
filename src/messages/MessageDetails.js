@@ -1,4 +1,4 @@
-import {  useNavigate } from "react-router-dom"
+import {  useNavigate, Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { getUserProfileById } from "../auth/LoginProvider"
 import { useRef } from 'react';
@@ -74,7 +74,7 @@ export const MessageDetails = ({fullMessages, userId, updateMessages }) => {
                 : ""
             }
             {
-                userProfile ? `${userProfile[0]?.user?.fullName}`
+                userProfile ? <Link to={`/userProfile/${userId}`}>{userProfile[0]?.user?.fullName}</Link>
                 : ""
             }
         

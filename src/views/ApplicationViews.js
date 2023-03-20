@@ -14,6 +14,7 @@ import { MessageForm } from "../messages/MessageForm"
 import { UserProfiles } from "../community/UserProfiles"
 import { UserInformation } from "../community/UserInformation"
 import { PostByUserClicked } from "../community/PostsByUser"
+import { EditPost } from "../community/EditPost"
 
 
 
@@ -43,6 +44,7 @@ export const ApplicationViews = () => {
               <Route path="/userProfiles" element={<UserProfiles />} />
               <Route path="/userProfile/:userId" element={<UserInformation />} />
               <Route path="/posts/:userId" element={<PostByUserClicked />} />
+              <Route path="/post/edit/:reviewId" element={<EditPost />} />
             </Route>
         </Routes>
         </div>

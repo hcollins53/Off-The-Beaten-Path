@@ -30,6 +30,11 @@ export const UserProfile = () => {
         <div className="underline text-blue">
             <Link to={`/profile/edit/${userProfile.id}`}>Edit Profile</Link>
         </div>
+        <div>
+        <Link className="btn btn-justColor font-light m-6" to={`/posts/${hikeUser.id}`}>
+            Your Reviews
+            </Link>
+        </div>
     </article>
     : <Link className="font-title flex justify-center pt-40 text-2xl" to={`/profile/create/${hikeUser.id}`}>Add User Profile</Link>
     }
