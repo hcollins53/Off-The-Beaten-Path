@@ -55,8 +55,14 @@ export const getWeather = (trail) => {
 export const WeatherIcon = (icon) => {
     return (`http://openweathermap.org/img/wn/${icon}.png`)
 }
-
-
+export const GetUserWishListById = (id) => {
+    return fetch(`http://localhost:8088/wantList?_expand=user&_expand=trail&userId=${id}`)
+            .then(res => res.json())
+}
+export const getUserCompletedListById = (id) => {
+    return fetch(`http://localhost:8088/completedList?_expand=user&_expand=trail&userId=${id}`)
+            .then(res => res.json())
+}
 
 
 

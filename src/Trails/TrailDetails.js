@@ -43,7 +43,7 @@ export const TrailDetails = () => {
                     }
                 )
             )
-        }
+        },[]
     )
     const getWeatherInformation = () => {
         if(trail.name) {
@@ -106,11 +106,13 @@ export const TrailDetails = () => {
            
       
         const AddToWishListButton = () => {
-            const filteredWishList = wishList.filter(wish => wish.trailId === trailId);
-            const filteredCompletedList = completedList.filter(completed => completed.trailId === trailId);
+            const filteredWishList = wishList.filter(wish => {
+                return wish.trailId === parseInt(trailId)})
+            const filteredCompletedList = completedList.filter(completed => {
+                return completed.trailId === parseInt(trailId)})
           
-            if (filteredWishList.length && filteredCompletedList.length) {
-              return null;
+            if (filteredWishList.length || filteredCompletedList.length) {
+              return ""
             } else{
           
             return  (
@@ -119,9 +121,9 @@ export const TrailDetails = () => {
                   className="font-title btn-color2 mt-10 btn-sm">
                   Add To Wish List
                 </button>
-              );
+              )
             }
-          };
+          }
     
     return <>
     <article className="h-screen">
