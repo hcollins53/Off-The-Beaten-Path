@@ -31,7 +31,7 @@ export const NavBar = () => {
       </div>
     </div>
     <div className="navbar-center">
-        <img className="w-20" src="./logo.jpg" />
+        <img className="w-20" loading="lazy" src="./logo.jpg" />
       <Link to="/trails" className="btn btn-ghost normal-case text-4xl text-caribbeanCurrent">Off the Beaten Path</Link>
     </div>
     <div className="navbar-end">
