@@ -1,14 +1,17 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import { AddNewReview } from "./PostProvider"
+import { getReview } from "./PostProvider"
+import { EditUserPost } from "./PostProvider"
 
-export const Review = () => {
+
+
+export const EditPost = () => {
     const navigate = useNavigate()
     const localHiker = localStorage.getItem("hike_user")
     const hikeUser = JSON.parse(localHiker)
-    const {trailId} = useParams()
+    const {reviewId} = useParams()
     const[rating, setRating] = useState(null)
-   
+    
     const[review, update] = useState({
         title: "",
         trailId: "",
@@ -16,24 +19,23 @@ export const Review = () => {
         description: "",
         rating: 0,
         img: "",
-        date: ""
     })
-  
+    useEffect(
+    () => {
+        getReview(reviewId).then(
+            (data) => {
+                const singleReview = data[0]
+                update(singleReview)
+            }
+        )
+    },[]
+  )
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
-        const newReview= {
-            title: review.title,
-            trailId: parseInt(trailId),
-            userId: hikeUser.id,
-            description: review.description,
-            rating: parseInt(rating),
-            img: review.img,
-            date: new Date().toLocaleDateString()
-        }
-       AddNewReview(newReview)
+       EditUserPost(review)
             .then(() => {
-               navigate("/posts")
+               navigate(`/posts/${hikeUser.id}`)
             }) 
     }
     const handleRating = (event) => {
@@ -107,23 +109,12 @@ export const Review = () => {
             <button 
              onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
              className="btn btn-justColor font-light">
-                Submit New Review
+                Submit Edit
             </button>
             </div>
         </form>
         </article>
     )
 
-}
 
-{/* <input required autoFocus
-                        type="number"
-                        className="form-control mt-2 ml-12"
-                        value={review.rating}
-                        onChange={
-                            (evt) => {
-                                const copy = {...review}
-                                copy.rating = parseInt(evt.target.value)
-                                update(copy)
-                            }
-                        } /> */}
+}
