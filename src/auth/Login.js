@@ -38,11 +38,11 @@ return <>
                 <input type="email"
                     value={email}
                     onChange={evt => set(evt.target.value)}
-                    className="ml-2 rounded-lg border-slate-500 border-2 mt-4 mb-4"
+                    className="ml-2 rounded-lg border-slate-500 border-2 mt-4 mb-2"
                     required autoFocus />
             </fieldset>
             <fieldset className="">
-                <button type="submit" className=" btn rounded-full btn-lightSand btn-sm rounded mb-2">
+                <button type="submit" className=" btn btn-justColor font-light btn-sm mb-2">
                     Sign in
                 </button>
             </fieldset>

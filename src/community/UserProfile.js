@@ -36,7 +36,7 @@ export const UserProfile = () => {
             </Link>
         </div>
     </article>
-    : <Link className="font-title flex justify-center pt-40 text-2xl" to={`/profile/create/${hikeUser.id}`}>Add User Profile</Link>
+    : <Link className="font-title flex justify-center pt-40 text-2xl h-screen underline" to={`/profile/create/${hikeUser.id}`}>Add User Profile</Link>
     }
     
 

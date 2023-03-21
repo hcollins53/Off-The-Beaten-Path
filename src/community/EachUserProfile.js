@@ -5,7 +5,8 @@ export const EachProfile = ({id, userProfile}) => {
     const hikeUser = JSON.parse(localHiker)
     return (
         userProfile.userId !== hikeUser.id ? 
-             <section className="font-title text-center pt-10 h-screen w-[200px]">
+             <section className="font-title text-center flex justify-center">
+            <div className="">
             <div className="text-lg p-6">{userProfile?.user?.fullName}</div>
             <div className="flex justify-center pb-10">
                 <Link to={`/userProfile/${id}`}>
@@ -13,8 +14,9 @@ export const EachProfile = ({id, userProfile}) => {
                 </Link>
             </div>
             <div className="mb-2">Favorite hike: {userProfile.favoriteHike}</div>
-            <div className="mb-2 w-[200px]">How avid of a hiker are you: {userProfile.description}</div>
-            <div className="mb-2">{userProfile.area}</div>
+            <div className="mb-2 w-[300px]">How avid of a hiker are you: {userProfile.description}</div>
+            <div className="text-center">{userProfile.area}</div>
+            </div>
             </section>
             : ""
         
