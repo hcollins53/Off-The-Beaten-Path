@@ -35,15 +35,15 @@ export const AddTrail = () => {
 
     }
     return (
-        <form className="trailForm">
-            <h2 className="trailForm__title">Add New Trail</h2>
+        <form className="font-title text-center h-screen">
+            <h2 className="pt-6 text-2xl mb-4">Add New Trail</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Name:</label>
                     <input
                         required autoFocus
                         type="text"
-                        className="form-control"
+                        className="ml-2 rounded-lg border-slate-500 border-2 mt-2 mb-2"
                         placeholder="Name of the trail"
                         value={trail.name}
                         onChange={
@@ -60,7 +60,7 @@ export const AddTrail = () => {
                     <label htmlFor="length">How long is the trail:</label>
                     <input required autoFocus
                         type="number"
-                        className="form-control"
+                        className="ml-2 rounded-lg border-slate-500 border-2 mt-2 mb-2"
                         placeholder="length in miles"
                         value={trail.length}
                         onChange={
@@ -77,7 +77,7 @@ export const AddTrail = () => {
                     <label htmlFor="elevationGain">What is the elevation gain:</label>
                     <input required autoFocus
                         type="number"
-                        className="form-control"
+                        className="ml-2 rounded-lg border-slate-500 border-2 mt-2 mb-2"
                         placeholder="in feet"
                         value={trail.elevationGain}
                         onChange={
@@ -94,7 +94,8 @@ export const AddTrail = () => {
                     <label htmlFor="difficulty">What is the difficulty:</label>
                     <input required autoFocus
                         type="text"
-                        className="form-control"
+                        placeholder="difficulty"
+                        className="ml-2 rounded-lg border-slate-500 border-2 mt-2 mb-2"
                         value={trail.difficulty}
                         onChange={
                             (evt) => {
@@ -110,8 +111,9 @@ export const AddTrail = () => {
                     <label htmlFor="lat">What is the latitude of the trail location:</label>
                     <input required autoFocus
                         type="number"
-                        className="form-control"
+                        className="ml-2 rounded-lg border-slate-500 border-2 mt-2 mb-2"
                         value={trail.lat}
+                        placeholder="latitude"
                         onChange={
                             (evt) => {
                                 const copy = {...trail}
@@ -126,8 +128,9 @@ export const AddTrail = () => {
                     <label htmlFor="lon">What is the longitude of the trail location:</label>
                     <input required autoFocus
                         type="number"
-                        className="form-control"
+                        className="ml-2 rounded-lg border-slate-500 border-2 mt-2 mb-2"
                         value={trail.lon}
+                        placeholder="longitude"
                         onChange={
                             (evt) => {
                                 const copy = {...trail}
@@ -142,7 +145,8 @@ export const AddTrail = () => {
                     <label htmlFor="image">Post a link to an image of the Trail:</label>
                     <input required autoFocus
                         type="text"
-                        className="form-control"
+                        className="ml-2 rounded-lg border-slate-500 border-2 mt-2 mb-4"
+                        placeholder="URL of image"
                         value={trail.img}
                         onChange={
                             (evt) => {
@@ -155,7 +159,7 @@ export const AddTrail = () => {
             </fieldset>
             <button 
              onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-             className="btn btn-primary">
+             className="btn btn-justColor font-light">
                 Submit New Trail
             </button>
         </form>

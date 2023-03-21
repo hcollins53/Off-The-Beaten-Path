@@ -48,20 +48,20 @@ export const Register = (props) => {
     return <>
     <div className="title">Off the Beaten Path</div>
         <main className="mb-4 font-title w-screen h-screen image"style={{ textAlign: "center" }}>
-            <form className="signIn mt-48" onSubmit={handleRegister}>
+            <form className="signIn p-4 mt-48" onSubmit={handleRegister}>
                 <h1 className=" text-3xl item-center mb-4 border-b-2 border-gray-700">Please Register</h1>
-                <fieldset>
-                    <label className="mr-4" htmlFor="fullName"> Name </label>
+                <fieldset  className="form-group" >
+                    <label className="" htmlFor="fullName"> Name </label>
                     <input onChange={updateUser}
-                           type="text" id="fullName" className="form-control" required autoFocus />
+                           type="text" id="fullName" className="mx-auto rounded-lg border-slate-500 border-2 mt-2 w-[200px]" required autoFocus />
+                </fieldset>
+                <fieldset className="mb-3">
+                    <label className="" htmlFor="email"> Email address </label>
+                    <input onChange={updateUser}
+                        type="email" id="email" className="mx-auto rounded-lg border-slate-500 border-2 mt-2 w-[200px] " required />
                 </fieldset>
                 <fieldset>
-                    <label className="ml-4" htmlFor="email"> Email address </label>
-                    <input onChange={updateUser}
-                        type="email" id="email" className="form-control mr-4" required />
-                </fieldset>
-                <fieldset>
-                    <button className="bg-slate-200 rounded-lg underline bg-opacity-80 mb-2" type="submit"> Register </button>
+                    <button className="btn btn-justColor font-light btn-sm" type="submit"> Register </button>
                 </fieldset>
             </form>
         </main>

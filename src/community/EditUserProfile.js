@@ -41,11 +41,13 @@ export const UserProfileEdit = () => {
         })
     }
     return <>
+    <article className="flex justify-center">
     <form className="font-title text-center h-screen">
             <h2 className="text-2xl p-10">Update User Profile</h2>
-            <fieldset>
-                <div className="pb-4">
-                    <label htmlFor="image">Profile picture:</label>
+            <div className="border-2 border-black shadow-xl rounded-xl p-10 bg-silver text-center">
+            <fieldset className="flex justify-center flex-col">
+                <div className="flex justify-center flex-col mb-4">
+                    <label className="mb-2">Profile picture:</label>
                     <input
                         required autoFocus
                         type="text"
@@ -62,10 +64,10 @@ export const UserProfileEdit = () => {
                 </div>
             </fieldset>
             <fieldset>
-                <div className="pb-4">
-                    <label htmlFor="favoriteHike">Favorite Hike:</label>
+                <div className="flex justify-center flex-col mb-4">
+                    <label className="mr-2">Favorite Hike:</label>
                     <select 
-                        className="ml-2 rounded-lg border-slate-500 border-2" 
+                        className="mx-auto rounded-lg border-slate-500 border-2 mt-2 w-[220px]" 
                             onChange={
                             (evt) => {
                                 const copy = {...userProfile}
@@ -86,10 +88,10 @@ export const UserProfileEdit = () => {
                 </div>
             </fieldset>
             <fieldset>
-                <div className="pb-4">
-                    <label htmlFor="">Description:</label>
+                <div className="flex justify-center flex-col mb-4">
+                    <label className="mr-2">Description:</label>
                     <input type="text"
-                        className="ml-2 rounded-lg border-slate-500 border-2"
+                        className="mx-auto rounded-lg border-slate-500 border-2 mt-2 w-[400px]"
                         value={userProfile.description}
                         onChange={
                             (evt) => {
@@ -101,10 +103,10 @@ export const UserProfileEdit = () => {
                 </div>
             </fieldset>
             <fieldset>
-                <div className="pb-6">
-                    <label htmlFor="">Area You live in:</label>
+                <div className="flex justify-center flex-col mb-4">
+                    <label className="mb-2">Area You live in:</label>
                     <input type="text"
-                    className="ml-2 rounded-lg border-slate-500 border-2"
+                    className="mx-auto rounded-lg border-slate-500 border-2 w-[200px]"
                         value={userProfile.area}
                         onChange={
                             (evt) => {
@@ -117,9 +119,11 @@ export const UserProfileEdit = () => {
             </fieldset>
             <button 
              onClick={(clickEvent) => handleSubmitEdit(clickEvent)}
-             className="btn btn-justColor font-light">
+             className="mt-2 btn btn-justColor font-light">
                 Save Edit
             </button>
+            </div>
         </form>
+        </article>
     </>
 }

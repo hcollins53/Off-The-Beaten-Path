@@ -39,13 +39,13 @@ export const MessageForm = () => {
     }
     return <>
     <form className="font-title pt-20 text-center h-screen flex flex-wrap justify-center">
-        <div className="border-slate-500 border-2 w-96 pb-4 h-96 rounded-xl shadow-xl">
+        <div className="border-slate-500 border-2 w-96 pb-4 h-96 bg-silver rounded-xl shadow-xl">
     <h2 className="text-2xl p-10">Send a new message</h2>
     <fieldset>
         <div className="pb-4">
             <label htmlFor="receiverId">Who are you wanting to send a message to?</label>
             <select 
-                className="ml-2 rounded-lg border-slate-500 border-2 mt-2" 
+                className="mx-auto rounded-lg border-slate-500 border-2 mt-2 w-[220px]" 
                     onChange={
                     (evt) => {
                         const copy = {...message}
@@ -65,12 +65,12 @@ export const MessageForm = () => {
         </div>
     </fieldset>
     <fieldset>
-        <div className="pb-10">
+        <div className="pb-6">
             <label htmlFor="body">What do you wish to say?</label>
             <input
                 required autoFocus
                 type="text"
-                className="ml-2 rounded-lg border-slate-500 border-2"
+                className="mx-auto rounded-lg border-slate-500 border-2 mt-2 w-[300px]"
                 value={message.body}
                 onChange={
                     (evt) => {

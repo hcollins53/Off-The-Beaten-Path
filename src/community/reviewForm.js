@@ -40,18 +40,20 @@ export const Review = () => {
         setRating(event.target.value)
         //setIsChecked(true)
     }
+    //aliceBlue
     return (
         <article className="flex justify-center">
         <form className="font-title h-screen">
             <h2 className="text-4xl pt-10 pb-10 text-center">Review this trail</h2>
-            <div className="border-2 border-black shadow-xl rounded-xl p-10 bg-slate-200 text-center">
+            <div className="border-2 border-black shadow-xl rounded-xl p-10 bg-silver text-center">
             <fieldset className="mb-2">
-                <div className="form-group">
+                <div className="form-group flex justify-center flex-col">
                     <label className="mb-2">Title of Post:</label>
                     <input
                         required autoFocus
                         type="text"
-                        className="form-control mt-2 mx-auto"
+                        placeholder="Title"
+                        className="mx-auto rounded-lg border-slate-500 border-2 mt-2 w-[300px]"
                         value={review.title}
                         onChange={
                             (evt) => {
@@ -62,13 +64,14 @@ export const Review = () => {
                         } />
                 </div>
             </fieldset>
-            <fieldset className="mb-2">
-                <div className="form-group">
+            <fieldset className="m-4">
+                <div className="form-group flex justify-center flex-col">
                     <label htmlFor="description">Your thoughts on the trail: </label>
                     <input required autoFocus
                         type="text"
-                        className="form-control mt-2 mx-auto"
+                        className="mx-auto rounded-lg border-slate-500 border-2 mt-2 w-[300px]"
                         value={review.description}
+                        placeholder="Ypur thoughts"
                         onChange={
                             (evt) => {
                                 const copy = {...review}
@@ -78,7 +81,7 @@ export const Review = () => {
                         } />
                 </div>
             </fieldset>
-            <fieldset className="mb-2">
+            <fieldset className="m-4">
             <label className="mr-4" htmlFor="rating">How would you rate this trail out of 5:</label>
                 <div className="rating">
                     <input type="radio" name="rating-2" value="1" className="mask mask-star bg-orange-400" onClick={handleRating} />
@@ -88,12 +91,13 @@ export const Review = () => {
                     <input type="radio" name="rating-2" value="5" className="mask mask-star bg-orange-400" onClick={handleRating}/>
                     </div>    
             </fieldset>
-            <fieldset className="mb-4">
-                <div className="form-group">
+            <fieldset className="m-4">
+                <div className="form-group flex justify-center flex-col">
                     <label htmlFor="image">Post a link to an image of the Trail:</label>
                     <input required autoFocus
                         type="text"
-                        className="form-control mt-2 mx-auto"
+                        placeholder="URL link to the image"
+                        className="mx-auto rounded-lg border-slate-500 border-2 mt-2 w-[300px]"
                         value={review.img}
                         onChange={
                             (evt) => {
