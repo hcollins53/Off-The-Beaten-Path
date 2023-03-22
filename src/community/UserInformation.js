@@ -54,7 +54,7 @@ export const UserInformation = () => {
                         return <div className="carousel-item h-80 m-4 p-6 flex flex-col rounded-xl border-black border-2 shadow-2xl  bg-silver w-auto " key={wish.id}>
                         <div className="mb-4 text-xl text-center">
                             <Link to={`/trails/${wish.trailId}`}>{wish?.trail?.name}</Link></div>
-                        <div className="w-72 mx-auto"><img src={wish?.trail?.img}/></div></div>
+                        <div className="w-72 mx-auto"><img className="h-56 mx-auto" src={wish?.trail?.img}/></div></div>
                     })
                 }
             </div>
@@ -69,7 +69,7 @@ export const UserInformation = () => {
                             <Link to={`/trails/${complete.trailId}`}>{complete?.trail?.name}
                             </Link>
                             </div>
-                            <div className="w-[288px] mx-auto"><img src={complete?.trail?.img}/></div>
+                            <div className="w-[288px] mx-auto"><img  className="h-56 mx-auto" src={complete?.trail?.img}/></div>
                             </section>
                 })
             }

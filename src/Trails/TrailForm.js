@@ -12,7 +12,9 @@ export const AddTrail = () => {
         difficulty: "",
         lat: "",
         lon: "",
-        img: ""
+        img: "",
+        permit: "",
+        fees: ""
     })
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
@@ -24,7 +26,9 @@ export const AddTrail = () => {
             difficulty: trail.difficulty,
             lat: trail.lat,
             lon: trail.lon,
-            img: trail.img
+            img: trail.img,
+            permit: trail.permit,
+            fees: trail.fees
         }
 
        AddNewTrail(newTrail).then(
@@ -37,6 +41,7 @@ export const AddTrail = () => {
     return (
         <form className="font-title text-center h-screen">
             <h2 className="pt-6 text-2xl mb-4">Add New Trail</h2>
+            <div className="border-2 border-black shadow-xl rounded-xl flex flex-col mx-auto p-10 bg-silver text-center w-[800px]">
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Name:</label>
@@ -157,11 +162,46 @@ export const AddTrail = () => {
                         } />
                 </div>
             </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="image">Do you need a permit:</label>
+                    <input required autoFocus
+                        type="text"
+                        className="ml-2 rounded-lg border-slate-500 border-2 mt-2 mb-4"
+                        placeholder="Yes or no/ a brief description"
+                        value={trail.permit}
+                        onChange={
+                            (evt) => {
+                                const copy = {...trail}
+                                copy.permit = evt.target.value
+                                update(copy)
+                            }
+                        } />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="image">How much are the fees if there are any:</label>
+                    <input required autoFocus
+                        type="text"
+                        className="ml-2 rounded-lg border-slate-500 border-2 mt-2 mb-6"
+                        placeholder="amount"
+                        value={trail.fees}
+                        onChange={
+                            (evt) => {
+                                const copy = {...trail}
+                                copy.fees = evt.target.value
+                                update(copy)
+                            }
+                        } />
+                </div>
+            </fieldset>
             <button 
              onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-             className="btn btn-justColor font-light">
+             className="mx-auto btn btn-justColor font-light w-[200px]">
                 Submit New Trail
             </button>
+            </div>
         </form>
     )
 
