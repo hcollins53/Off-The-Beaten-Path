@@ -63,8 +63,14 @@ export const getUserCompletedListById = (id) => {
     return fetch(`http://localhost:8088/completedList?_expand=user&_expand=trail&userId=${id}`)
             .then(res => res.json())
 }
-
-
+export const getSunriseOrSunsetTimes = (trail) => {
+    return fetch(`https://api.sunrise-sunset.org/json?lat=${trail.lat}&lng=${trail.lon}&date=today`)
+    .then(response => response.json())
+}
+export const getAirQuality = (trail) => {
+    return fetch(`http://api.airvisual.com/v2/nearest_city?lat=${trail.lat}&lon=${trail.lon}&key=ffe745a7-9425-4910-b912-1b8cb5d746d7`)
+    .then(response => response.json())
+}
 
 
 
