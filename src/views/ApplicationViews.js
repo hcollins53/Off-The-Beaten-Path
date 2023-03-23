@@ -15,6 +15,7 @@ import { UserProfiles } from "../community/UserProfiles"
 import { UserInformation } from "../community/UserInformation"
 import { PostByUserClicked } from "../community/PostsByUser"
 import { EditPost } from "../community/EditPost"
+import { CampingSitesNearTrail } from "../Trails/CampingSites"
 
 
 
@@ -45,6 +46,7 @@ export const ApplicationViews = () => {
               <Route path="/userProfile/:userId" element={<UserInformation />} />
               <Route path="/posts/:userId" element={<PostByUserClicked />} />
               <Route path="/post/edit/:reviewId" element={<EditPost />} />
+              <Route path="/camping/:trailId" element={<CampingSitesNearTrail />} />
             </Route>
         </Routes>
         </div>
