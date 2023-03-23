@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
 import { GetUserWishList } from "./TrailProvider"
 import { getSunriseOrSunsetTimes } from "./TrailProvider"
 import { getAirQuality } from "./TrailProvider"
@@ -130,22 +130,22 @@ export const TrailDetails = () => {
       
     const CheckAquisLevel = () => {
         if(airQuality?.current?.pollution?.aqius <= 50) {
-            return <div className="flex flex-col justify-end mr-2">
+            return <div className="flex flex-col justify-end shadow-lg p-4 py-20 my-auto ">
                 <img className ="w-12 mx-auto mb-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfvfaa5iSyHpKCaM2knBZvbvUoZU4feWk8LQ&usqp=CAU"/>
                 <div className="w-[200px] text-center">Air Quality is satisfactory and poses little or no risk</div>
             </div>
         } else if(airQuality?.current?.pollution?.aqius > 50 || airQuality?.current?.pollution?.aqius <= 100){
-            return <div className="flex flex-col justify-end mr-2">
+            return <div className="flex flex-col justify-end shadow-lg p-4 pb-12">
                 <img className ="w-12 mx-auto mb-2" src="https://cdn3.vectorstock.com/i/1000x1000/90/02/yellow-sad-face-negative-people-emotion-icon-vector-14659002.jpg" />
                 <div className="w-[200px] text-center">Sensitive groups should greatly reduce outdoor activity as they may experience respiratory symptoms</div>
             </div>
         }else if(airQuality?.current?.pollution?.aqius > 100 || airQuality?.current?.pollution?.aqius <= 150){
-            return <div className="flex flex-col justify-end mr-2">
+            return <div className="flex flex-col justify-end shadow-lg p-4 pb-12">
                 <img className ="w-12 mx-auto mb-2" src="https://c8.alamy.com/zooms/9/03ebc19a77d742ae8e82810d4c19f75e/pftcjm.jpg" />
                 <div className="w-[200px] text-center">General Public is at risk to experience irritation and respiratory problems. The public should greatly reduce outdoor activities</div>
             </div>
         }else if(airQuality?.current?.pollution?.aqius > 150 || airQuality?.current?.pollution?.aqius <= 200){
-            return <div className="flex flex-col justify-end mr-2">
+            return <div className="flex flex-col justify-end shadow-lg p-4 pb-12">
                 <img className ="w-12 mx-auto mb-2" src="https://cdn0.iconfinder.com/data/icons/universal-web-mobile-3-4/65/297-512.png" />
                 <div className="w-[200px] text-center">Increased likelihood of adverse effects and aggravation to the heart and lungs among general public</div>
             </div>
@@ -217,18 +217,18 @@ export const TrailDetails = () => {
         </div>
     <div>
     <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-        <div className="modal ">
-  <div className="modal-box relative justify-between flex flex-row bg-silver">
+        <div className="modal backdrop-blur-sm">
+  <div className="modal-box relative justify-between flex flex-row bg-silver w-6/12 max-w-5xl">
     <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <div className="flex justify-evenly ">
-        <div className="mr-10">
+    <div className="flex justify-evenly">
+        <div className=" p-4 shadow-lg w-[200px]">
         <div className="flex flex-col">
         <img className="w-20 h-20 mb-2 rounded-full" src="https://i.pinimg.com/originals/5e/75/cc/5e75cc9a9fc5e901a4adf868395e2ddf.gif" />
-         <div className="ml-2"> {sunrise} </div>
+         <div className=""> {sunrise} </div>
          </div>
         <div className="flex flex-col">
          <img className="w-20 h-20 rounded-full" src="http://31.media.tumblr.com/af2638122f8a0ffa58384a93b650336d/tumblr_mpagsu9jjs1sr77jco1_500.gif" />
-         <div className="ml-2  ">
+         <div className="">
          {sunset}
         </div>
         </div>
@@ -238,12 +238,15 @@ export const TrailDetails = () => {
         CheckAquisLevel()
      }
  </div>
- <div className="flex flex-col justify-center">
+ <div className="flex flex-col justify-center shadow-lg p-2 w-2/6">
  <div className="mb-4">
    Do I need a permit? {trail.permit}
  </div>
- <div>
+ <div className="mb-4">
     Fees: {trail.fees}
+ </div>
+ <div className="mx-auto">
+ <Link className="btn-justColor font-light w-[100px] p-2 py-1" to={`/camping/${trailId}`}>Camping Sites</Link>
  </div>
  </div>
  </div>
