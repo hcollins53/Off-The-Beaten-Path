@@ -74,7 +74,7 @@ export const UserMessages = ({searchTermState}) => {
         }, []
     )
     const SortFullMessages = () => {
-        if (receivedMessages.length && sentMessages.length) {
+        if (receivedMessages.length || sentMessages.length) {
             const newSentMessages = sentMessages.map(sentMessage => {
               const messages = receivedMessages.filter(receivedMessage => {
                 return sentMessage.receiverId === receivedMessage.senderId;

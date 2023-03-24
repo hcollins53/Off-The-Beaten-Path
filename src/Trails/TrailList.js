@@ -34,20 +34,31 @@ export const TrailList = ({searchTermState, sortByDifficulty, sortByMileage, sor
             getTrails()
              .then((trailsArray) => {
                 setTrails(trailsArray)
+                setFilteredTrails(trailsArray)
              })
+             
         },
         [] 
     )
     useEffect(
         () => {
+            if(sortByDifficulty === ""){
+                setFilteredTrails(trails)
+
+            } else {
             const searchedTrails = trails.filter(trail => {
                 return trail.difficulty.includes(sortByDifficulty)
             })
             setFilteredTrails(searchedTrails)
+        }
         }, [sortByDifficulty]
     )
     useEffect(
         () => {
+            if(sortByMileage === ""){
+                setFilteredTrails(trails)
+
+            } else {
             const searchedTrails = trails.filter(trail => {
                if(sortByMileage === "3"){
                     if(trail.length <= 3){
@@ -65,11 +76,16 @@ export const TrailList = ({searchTermState, sortByDifficulty, sortByMileage, sor
                }
             })
             setFilteredTrails(searchedTrails)
+        }
         }, [sortByMileage]
     )
     useEffect(
         () => {
-            const searchedTrails = trails.filter(trail => {
+            if(sortByElevation === ""){
+                setFilteredTrails(trails)
+
+            } else {
+            const searchedTrails = filteredTrails.filter(trail => {
                 if(sortByElevation === "700"){
                      if(trail.elevationGain <= 700){
                          return trail
@@ -86,16 +102,21 @@ export const TrailList = ({searchTermState, sortByDifficulty, sortByMileage, sor
                 }
              })
             setFilteredTrails(searchedTrails)
+            }
         }, [sortByElevation]
     )
     useEffect(
         () => {
-           const searchedTrails = trails.filter(trail => {
+            if(searchTermState === "") {
+                setFilteredTrails(trails)
+            } else {
+           const searchedTrails = filteredTrails.filter(trail => {
            return (trail.name.toLowerCase().startsWith(searchTermState.toLowerCase()))
         })
            setFilteredTrails(searchedTrails)
     
-        },
+        }
+    },
         [searchTermState]
     )
     function MyMapComponent() {
@@ -123,7 +144,7 @@ export const TrailList = ({searchTermState, sortByDifficulty, sortByMileage, sor
                 searchTermState || sortByDifficulty ?
                 filteredTrails.map((trail) => <Trails key={trail.id} id={trail.id} trail={trail} /> )
                 :
-                trails.map((trail) => <Trails key={trail.id} id={trail.id} trail={trail} /> )
+                filteredTrails.map((trail) => <Trails key={trail.id} id={trail.id} trail={trail} /> )
             }
         </section>
             <section>

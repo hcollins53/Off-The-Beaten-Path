@@ -11,7 +11,6 @@ export const MessageDetails = ({fullMessages, userId, updateMessages }) => {
     const[myMessages, setMyMessages]= useState([])
     const localHiker = localStorage.getItem("hike_user")
     const hikeUser = JSON.parse(localHiker)
-    const navigate = useNavigate()
     useEffect(
         () => {
            if(userId) {

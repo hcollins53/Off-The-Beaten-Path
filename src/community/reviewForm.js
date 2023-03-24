@@ -71,7 +71,7 @@ export const Review = () => {
                         type="text"
                         className="mx-auto rounded-lg border-slate-500 border-2 mt-2 w-[300px]"
                         value={review.description}
-                        placeholder="Ypur thoughts"
+                        placeholder="Your thoughts"
                         onChange={
                             (evt) => {
                                 const copy = {...review}
@@ -84,11 +84,11 @@ export const Review = () => {
             <fieldset className="m-4">
             <label className="mr-4" htmlFor="rating">How would you rate this trail out of 5:</label>
                 <div className="rating">
-                    <input type="radio" name="rating-2" value="1" className="mask mask-star bg-orange-400" onClick={handleRating} />
-                    <input type="radio" name="rating-2" value="2" className="mask mask-star bg-orange-400" onClick={handleRating}/>
-                    <input type="radio" name="rating-2" value="3" className="mask mask-star bg-orange-400" onClick={handleRating}/>
-                    <input type="radio" name="rating-2" value="4" className="mask mask-star bg-orange-400" onClick={handleRating}/>
-                    <input type="radio" name="rating-2" value="5" className="mask mask-star bg-orange-400" onClick={handleRating}/>
+                    <input type="radio" name="rating-2" value="1" className="mask mask-star bg-orange-500 hover:bg-orange-400 active:bg-orange-400" onClick={handleRating} />
+                    <input type="radio" name="rating-2" value="2" className="mask mask-star bg-orange-500 hover:bg-orange-400 active:bg-orange-400" onClick={handleRating}/>
+                    <input type="radio" name="rating-2" value="3" className="mask mask-star bg-orange-500 hover:bg-orange-400 active:bg-orange-400" onClick={handleRating}/>
+                    <input type="radio" name="rating-2" value="4" className="mask mask-star bg-orange-500 hover:bg-orange-400 active:bg-orange-400" onClick={handleRating}/>
+                    <input type="radio" name="rating-2" value="5" className="mask mask-star bg-orange-500 hover:bg-orange-400 active:bg-orange-400" onClick={handleRating}/>
                     </div>    
             </fieldset>
             <fieldset className="m-4">
