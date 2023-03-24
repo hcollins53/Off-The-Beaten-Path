@@ -27,7 +27,7 @@ useEffect(
 )
     return <>
     <div className="h-screen font-title">
-    <div className="text-center text-2xl p-4">Campgrounds near {trail.name}</div>
+    <div className="text-center text-3xl p-4 pt-6">Campgrounds near {trail.name}</div>
     <div className="flex justify-center">
     {
         
@@ -41,6 +41,9 @@ useEffect(
               </div>
               <div>
                Cost per night: {campSite.fees}
+              </div>
+              <div className="mt-4">
+                <a href={`${campSite.site}`} className="underline" target="_blank">Click here to make a Reservation</a>
               </div>
             </div>
         })
