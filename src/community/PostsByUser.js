@@ -75,7 +75,7 @@ export const PostByUserClicked = () => {
                 <div className="text=2xl mb-2 text-center">{review.title}</div>
                 </div>
                 <div className="w-80 mb-4 mx-auto" >
-                <Link to={`/trails/${review.trailId}`}> <img className="mx-auto" src={review.img} />
+                <Link to={`/trails/${review.trailId}`}> <img className="mx-auto w-[300px] h-[200px]" src={review.img} />
                 </Link>
                </div>
                 <div>{review.description}</div>

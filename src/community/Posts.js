@@ -38,7 +38,7 @@ export const Posts = () => {
             return <section className="p-4 m-10 border w-96 h-full ml-80 mr-80 flex flex-col border-2 border-black shadow-xl rounded-xl bg-silver">
                 <div className="text=2xl mb-2">{review.title}</div>
                 <div className="w-80 mb-4 mx-auto" >
-                <Link to={`/trails/${review.trailId}`}> <img className="mx-auto" src={review.img} />
+                <Link to={`/trails/${review.trailId}`}> <img className="mx-auto w-[300px] h-[200px]" src={review.img} />
                 </Link>
                </div>
                 <div>{review.description}</div>

@@ -10,7 +10,7 @@ export const EditPost = () => {
     const localHiker = localStorage.getItem("hike_user")
     const hikeUser = JSON.parse(localHiker)
     const {reviewId} = useParams()
-    const[rating, setRating] = useState(null)
+    const[ratingStar, setRating] = useState(null)
     
     const[review, update] = useState({
         title: "",
@@ -29,6 +29,14 @@ export const EditPost = () => {
             }
         )
     },[]
+  )
+  useEffect(
+    () => {
+        let copy = {...review}
+        copy.rating = parseInt(ratingStar)
+        update(copy)
+
+    }, [ratingStar]
   )
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
