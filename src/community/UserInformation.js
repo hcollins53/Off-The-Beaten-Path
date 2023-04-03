@@ -38,11 +38,9 @@ export const UserInformation = () => {
     )
     return <>
     <article className="font-title text-center mx-auto pt-4 h-screen ">
-        <div className="flex flex-col justify-center pb-10">
-            <div className="text-3xl p-4">{userProfile?.user?.fullName}</div>
-            <div className="">
-                <img className="mx-auto rounded-full shadow-xl w-[150px] h-[150px]" src={userProfile.image} />
-            </div>
+        <div className="flex justify-center pb-10">
+        <img className=" rounded-full shadow-xl w-[100px] h-[100px]" src={userProfile.image} />
+            <div className="text-3xl text-center my-auto pl-3">{userProfile?.user?.fullName}</div>
             </div>   
 
         <div className="flex flex-row justify-evenly">

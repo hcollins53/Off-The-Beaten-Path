@@ -1,71 +1,68 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+![Title](./public/OFF-Beaten-Path-logo.png)
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# WHat is Off The Beaten Path?
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Off The Beaten Path is an application aimed at offering a social network for hiking lovers and a place to find new hiking trails to explore. 
 
-### `npm test`
+## What are the application's functionalities?
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* A user can find trails they want to explore by looking at the list of trails or the map of trails
 
-### `npm run build`
+![Trails](./public/TrailsList.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* A user can click search for trails using the search bar or filter by difficulty, length, or elevation gain.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Search](./public/SearchBar.png)
+![Filter](./public/Filter.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* A user can click on a trail to view more details
 
-### `npm run eject`
+![Trail Details](./public/TrailDetails.png)
+![More Details](./public/TrailFlipSide.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* A user can click on "Read More" to view sunrise and sunset times, air quality, and if you need a permit 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![More Details](./public/MoreTrailDetails.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* A user can click on the "camping sites" button to view the camping site(s) nearest to the trail
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![More Details](./public/Camping.png)
 
-## Learn More
+* A user can add trails to their wish list and view their list
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Wish List](./public/WishList.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* A user can add a trail from their wish list to their completed list and view their completed list of trails.
 
-### Code Splitting
+![Completed List](./public/CompletedList.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* A user can review a trail they completed 
 
-### Analyzing the Bundle Size
+![Review](./public/Review.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* A user can view everyone's posts
 
-### Making a Progressive Web App
+![Community Posts](./public/CommunityPost.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* A user can click on the bell icon to message other users
 
-### Advanced Configuration
+![Messaging](./public/Messaging.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+* A user can view their own profile, update their profile, and click on "Your reviews" to see the posts the user has made
 
-### Deployment
+![Profile](./public/Profile.png)
+![Profile](./public/ProfileEdit.png)
+![Profile](./public/UserPost.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+* A user can view other people's profile
 
-### `npm run build` fails to minify
+![Profile](./public/UserProfiles.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# Off-The-Beaten-Path
+* A user can click on another user's profile to view their wish list, completed list and their reviews
+
+![Profile](./public/UserProfile.png)
+![Profile](./public/UserReview.png)
