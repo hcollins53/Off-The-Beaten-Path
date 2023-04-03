@@ -4,7 +4,7 @@
 
 
 
-# WHat is Off The Beaten Path?
+# What is Off The Beaten Path?
 
 Off The Beaten Path is an application aimed at offering a social network for hiking lovers and a place to find new hiking trails to explore. 
 
@@ -66,3 +66,8 @@ Off The Beaten Path is an application aimed at offering a social network for hik
 
 ![Profile](./public/UserProfile.png)
 ![Profile](./public/UserReview.png)
+
+## Installations
+
+* https://daisyui.com/docs/install/
+* https://tailwindcss.com/
