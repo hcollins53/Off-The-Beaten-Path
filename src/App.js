@@ -7,7 +7,7 @@ import { NavBar } from './nav/NavBar';
 import { ApplicationViews } from './views/ApplicationViews';
 import { Authorized } from './views/Authorized';
 
-//import { ThirstForTravel } from './ThirstForTravel';
+
 
 
 function App() {
